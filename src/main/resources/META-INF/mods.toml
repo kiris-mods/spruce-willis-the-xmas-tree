@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+updateJSONURL="https://raw.githubusercontent.com/MinecraftModDevelopmentMods/spruce-willis-the-xmas-tree/master/update.json"
+issueTrackerURL="https://github.com/MinecraftModDevelopmentMods/spruce-willis-the-xmas-tree/issues"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/spruce-willis-the-xmas-tree"
+#logoFile=""
+credits="ProxyNeko, Coda"
+authors="ProxyNeko, Coda"
+
+[[mods]]
+modId="spruce-willis-the-xmas-tree"
+version="${file.jarVersion}"
+displayName="Spruce Willis the Xmas Tree"
+description='''
+Who doesn't love Spruce Willis!
+'''
+
+[[dependencies.creepy-creepers]]
+   modId="forge"
+   mandatory=true
+   versionRange="[28,)"
+   ordering="NONE"
+   side="BOTH"
+[[dependencies.spruce-willis-the-xmas-tree]]
+   modId="minecraft"
+   mandatory=true
+   versionRange="[1.14.4]"
+   ordering="NONE"
+   side="BOTH"
