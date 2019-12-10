@@ -8,6 +8,7 @@ import net.minecraft.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.MoveTowardsTargetGoal;
+import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -44,6 +45,7 @@ public class SpruceWillisEntity extends CreatureEntity {
 		goalSelector.addGoal(3, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
 		goalSelector.addGoal(4, new LookAtGoal(this, PlayerEntity.class, 8.0F));
 		goalSelector.addGoal(5, new LookRandomlyGoal(this));
+		goalSelector.addGoal(6, new SwimGoal(this));
 	}
 
 	/**

@@ -6,6 +6,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.MoveTowardsVillageGoal;
+import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
@@ -24,7 +25,6 @@ public class GrandfatherWillisEntity extends CreatureEntity {
 	 */
 	public GrandfatherWillisEntity(EntityType<? extends CreatureEntity> type, World world) {
 		super(type, world);
-		isImmuneToFire();
 	}
 
 	/**
@@ -36,6 +36,7 @@ public class GrandfatherWillisEntity extends CreatureEntity {
 		goalSelector.addGoal(3, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
 		goalSelector.addGoal(4, new LookAtGoal(this, PlayerEntity.class, 8.0F));
 		goalSelector.addGoal(5, new LookRandomlyGoal(this));
+		goalSelector.addGoal(6, new SwimGoal(this));
 	}
 
 	/**

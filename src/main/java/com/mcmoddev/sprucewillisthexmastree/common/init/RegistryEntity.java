@@ -39,6 +39,7 @@ public class RegistryEntity {
 	public static final EntityType<GrandfatherWillisEntity> GRANDFATHER_SPRUCE_WILLIS =
 		(EntityType<GrandfatherWillisEntity>) EntityType.Builder.create(GrandfatherWillisEntity::new,
 			EntityClassification.CREATURE)
+			.immuneToFire()
 			.size(2.0F, 7.0F)
 			.setTrackingRange(80)
 			.setUpdateInterval(1)

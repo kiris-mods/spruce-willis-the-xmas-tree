@@ -48,7 +48,7 @@ public class RenderSpruceWillis extends MobRenderer<SpruceWillisEntity, SpruceWi
 	 */
 	@Override
 	protected boolean canRenderName(SpruceWillisEntity entity) {
-		return true;
+		return entity.hasCustomName();
 	}
 
 	/**

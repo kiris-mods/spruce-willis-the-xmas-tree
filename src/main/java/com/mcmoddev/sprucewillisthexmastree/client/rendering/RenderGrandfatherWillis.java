@@ -48,7 +48,7 @@ public class RenderGrandfatherWillis extends MobRenderer<GrandfatherWillisEntity
 	 */
 	@Override
 	protected boolean canRenderName(GrandfatherWillisEntity entity) {
-		return true;
+		return entity.hasCustomName();
 	}
 
 	/**

@@ -31,7 +31,7 @@ public class Config {
 				.define("enableNaturalSpawning", true);
 
 			SpruceWillisSpawnWeight = builder.comment("If -1, the default spawn weight will be used.")
-				.defineInRange("spawnWeight", 15, -1, Integer.MAX_VALUE);
+				.defineInRange("spawnWeight", 10, -1, Integer.MAX_VALUE);
 
 			BiomeWhitelist = builder.comment("If biomes are specified here,"
 				+ " Spruce Willis will spawn in ONLY these biomes. (The blacklist is ignored while this is set!)")
