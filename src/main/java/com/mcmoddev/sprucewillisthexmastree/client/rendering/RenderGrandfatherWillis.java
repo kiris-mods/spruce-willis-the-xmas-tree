@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nonnull;
 
 /**
- *
+ * Render the Grandfather Spruce Willis model and texture.
  */
 @OnlyIn(Dist.CLIENT)
 public class RenderGrandfatherWillis extends MobRenderer<GrandfatherWillisEntity, GrandfatherWillisModel> {
@@ -25,7 +25,7 @@ public class RenderGrandfatherWillis extends MobRenderer<GrandfatherWillisEntity
 		"textures/entity/spruce_willis_the_xmas_tree.png");
 
 	/**
-	 * @param rendererManager
+	 * @param rendererManager The render manager.
 	 */
 	public RenderGrandfatherWillis(EntityRendererManager rendererManager) {
 		super(rendererManager, new GrandfatherWillisModel(), 0.8F);
@@ -33,7 +33,7 @@ public class RenderGrandfatherWillis extends MobRenderer<GrandfatherWillisEntity
 
 	/**
 	 * @param entity          The entity.
-	 * @param partialTickTime
+	 * @param partialTickTime .
 	 */
 	@Override
 	public void preRenderCallback(GrandfatherWillisEntity entity, float partialTickTime) {

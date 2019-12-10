@@ -210,12 +210,12 @@ public class SpruceWillisModel extends EntityModel<SpruceWillisEntity> {
 
 	/**
 	 * @param entity The entity.
-	 * @param f
-	 * @param f1
-	 * @param f2
-	 * @param f3
-	 * @param f4
-	 * @param f5
+	 * @param f      .
+	 * @param f1     .
+	 * @param f2     .
+	 * @param f3     .
+	 * @param f4     .
+	 * @param f5     .
 	 */
 	@Override
 	public void render(SpruceWillisEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
@@ -224,12 +224,12 @@ public class SpruceWillisModel extends EntityModel<SpruceWillisEntity> {
 
 	/**
 	 * @param entity          The entity.
-	 * @param limbSwing
-	 * @param limbSwingAmount
-	 * @param ageInTicks
-	 * @param netHeadYaw
-	 * @param headPitch
-	 * @param scaleFactor
+	 * @param limbSwing       .
+	 * @param limbSwingAmount .
+	 * @param ageInTicks      .
+	 * @param netHeadYaw      .
+	 * @param headPitch       .
+	 * @param scaleFactor     .
 	 */
 	@Override
 	public void setRotationAngles(SpruceWillisEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks,

@@ -6,6 +6,9 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
 
+/**
+ * The configuration setup class.
+ */
 public class Config {
 
 	public static final ServerConfig SERVER;
@@ -37,7 +40,20 @@ public class Config {
 			BiomeBlacklist = builder.comment("If the whitelist is not used, use this list to specify the"
 				+ " biomes that Spruce Willis should not spawn in.")
 				.defineList("blacklist",
-					Lists.newArrayList("minecraft:void", "minecraft:cave"), o -> o instanceof String);
+					Lists.newArrayList(
+						"minecraft:the_void",
+						"minecraft:ocean",
+						"minecraft:nether",
+						"minecraft:frozen_river",
+						"minecraft:frozen_ocean",
+						"minecraft:desert",
+						"minecraft:warm_ocean",
+						"minecraft:lukewarm_ocean",
+						"minecraft:cold_ocean",
+						"minecraft:deep_lukewarm_ocean",
+						"minecraft:deep_cold_ocean",
+						"minecraft:deep_frozen_ocean"
+					), o -> o instanceof String);
 		}
 	}
 }

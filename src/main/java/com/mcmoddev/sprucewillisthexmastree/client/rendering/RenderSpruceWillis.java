@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nonnull;
 
 /**
- *
+ * Render the spruce willis model and texture.
  */
 @OnlyIn(Dist.CLIENT)
 public class RenderSpruceWillis extends MobRenderer<SpruceWillisEntity, SpruceWillisModel> {
@@ -25,12 +25,16 @@ public class RenderSpruceWillis extends MobRenderer<SpruceWillisEntity, SpruceWi
 		"textures/entity/spruce_willis_the_xmas_tree.png");
 
 	/**
-	 * @param rendererManager
+	 * @param rendererManager The render manager for entities.
 	 */
 	public RenderSpruceWillis(EntityRendererManager rendererManager) {
 		super(rendererManager, new SpruceWillisModel(), 0.8F);
 	}
 
+	/**
+	 * @param entity          The entity.
+	 * @param partialTickTime .
+	 */
 	@Override
 	public void preRenderCallback(SpruceWillisEntity entity, float partialTickTime) {
 		GlStateManager.scaled(1.0D, 1.0D, 1.0D);

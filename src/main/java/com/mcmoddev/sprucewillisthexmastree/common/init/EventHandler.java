@@ -15,19 +15,22 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Mod.EventBusSubscriber(modid = SpruceWillisTheXmasTree.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@SuppressWarnings("unused")
 public class EventHandler {
 
 	private static Collection<Biome> biomes = null;
 	private static Biome.SpawnListEntry entry = null;
 
 	@SubscribeEvent
+	@SuppressWarnings("unused")
 	public static void onLoad(ModConfig.Loading event) {
 		if (event.getConfig().getSpec() != Config.SERVER_SPECIFICATION) {
 			return;
 		}
 
 		if (entry != null) {
-			biomes.stream().map(biome -> biome.getSpawns(EntityClassification.MONSTER)).forEach(list -> list.remove(entry));
+			biomes.stream().map(biome -> biome.getSpawns(EntityClassification.MONSTER)).forEach(list ->
+				list.remove(entry));
 			biomes = Collections.emptyList();
 		}
 
@@ -38,16 +41,20 @@ public class EventHandler {
 				biomes = ForgeRegistries.BIOMES.getValues();
 				if (Config.SERVER.BiomeWhitelist.get() != null && Config.SERVER.BiomeWhitelist.get().size() > 0) {
 					Set<String> whitelist = Sets.newHashSet(Config.SERVER.BiomeWhitelist.get());
-					biomes = biomes.stream().filter(b -> whitelist.contains(b.getRegistryName().toString())).collect(Collectors.toList());
+					biomes = biomes.stream().filter(b ->
+						whitelist.contains(b.getRegistryName().toString())).collect(Collectors.toList());
 				} else {
 					if (Config.SERVER.BiomeBlacklist.get() != null && Config.SERVER.BiomeBlacklist.get().size() > 0) {
 						Set<String> blacklist = Sets.newHashSet(Config.SERVER.BiomeBlacklist.get());
-						biomes = biomes.stream().filter(b -> !blacklist.contains(b.getRegistryName().toString())).collect(Collectors.toList());
+						biomes = biomes.stream().filter(b ->
+							!blacklist.contains(b.getRegistryName().toString())).collect(Collectors.toList());
 					}
 				}
 
-				entry = new Biome.SpawnListEntry(RegistryEntity.SPRUCE_WILLIS_THE_XMAS_TREE, Config.SERVER.SpruceWillisSpawnWeight.get(), 1, 5);
-				biomes.stream().map(biome -> biome.getSpawns(EntityClassification.MONSTER)).forEach(list -> list.add(entry));
+				entry = new Biome.SpawnListEntry(RegistryEntity.SPRUCE_WILLIS_THE_XMAS_TREE,
+					Config.SERVER.SpruceWillisSpawnWeight.get(), 1, 5);
+				biomes.stream().map(biome -> biome.getSpawns(EntityClassification.MONSTER)).forEach(list ->
+					list.add(entry));
 			}
 		}
 	}

@@ -8,8 +8,12 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.awt.*;
+import java.awt.Color;
 
+/**
+ * The registry class this mod uses for items.
+ */
+@SuppressWarnings("unused")
 @Mod.EventBusSubscriber(modid = SpruceWillisTheXmasTree.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RegistryItem {
 
@@ -17,6 +21,7 @@ public class RegistryItem {
 	 * @param event Add items and block items to the item registry.
 	 */
 	@SubscribeEvent
+	@SuppressWarnings("unused")
 	public static void registerItems(RegistryEvent.Register<Item> event) {
 		event.getRegistry().registerAll(
 			new SpawnEggItem(RegistryEntity.SPRUCE_WILLIS_THE_XMAS_TREE, Color.GREEN.getRGB(), Color.RED.getRGB(),

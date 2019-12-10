@@ -4,7 +4,11 @@ import com.mcmoddev.sprucewillisthexmastree.common.init.RegistryEntity;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.entity.ai.goal.LookAtGoal;
+import net.minecraft.entity.ai.goal.LookRandomlyGoal;
+import net.minecraft.entity.ai.goal.MoveTowardsTargetGoal;
+import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -16,7 +20,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
 /**
- *
+ * The Spruce Willis mob setup class.
  */
 public class SpruceWillisEntity extends CreatureEntity {
 
@@ -83,7 +87,7 @@ public class SpruceWillisEntity extends CreatureEntity {
 	/**
 	 * When this entity is struck by lightning it turns into Grandfather Spruce Willis the Wise.
 	 *
-	 * @param lightningBolt
+	 * @param lightningBolt The lightning bolt entity.
 	 */
 	@Override
 	public void onStruckByLightning(LightningBoltEntity lightningBolt) {

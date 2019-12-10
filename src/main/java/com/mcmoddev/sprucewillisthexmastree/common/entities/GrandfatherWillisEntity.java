@@ -14,7 +14,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
 /**
- *
+ * The setup class for Grandfather Spruce Willis.
  */
 public class GrandfatherWillisEntity extends CreatureEntity {
 
@@ -24,6 +24,7 @@ public class GrandfatherWillisEntity extends CreatureEntity {
 	 */
 	public GrandfatherWillisEntity(EntityType<? extends CreatureEntity> type, World world) {
 		super(type, world);
+		isImmuneToFire();
 	}
 
 	/**

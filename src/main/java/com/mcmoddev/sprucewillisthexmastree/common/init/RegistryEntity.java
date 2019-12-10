@@ -12,9 +12,15 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+/**
+ * The Entity Registry we use to register out mobs.
+ */
 @Mod.EventBusSubscriber(modid = SpruceWillisTheXmasTree.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RegistryEntity {
 
+	/**
+	 * The Spruce Willis the Xmas Tree mob.
+	 */
 	@SuppressWarnings("unchecked")
 	public static final EntityType<SpruceWillisEntity> SPRUCE_WILLIS_THE_XMAS_TREE =
 		(EntityType<SpruceWillisEntity>) EntityType.Builder.create(SpruceWillisEntity::new,
@@ -26,6 +32,9 @@ public class RegistryEntity {
 			.build(SpruceWillisTheXmasTree.MODID + ":spruce_willis_the_xmas_tree")
 			.setRegistryName("spruce_willis_the_xmas_tree");
 
+	/**
+	 * The grandfather Spruce Willis mob.
+	 */
 	@SuppressWarnings("unchecked")
 	public static final EntityType<GrandfatherWillisEntity> GRANDFATHER_SPRUCE_WILLIS =
 		(EntityType<GrandfatherWillisEntity>) EntityType.Builder.create(GrandfatherWillisEntity::new,
@@ -37,13 +46,19 @@ public class RegistryEntity {
 			.build(SpruceWillisTheXmasTree.MODID + ":grandfather_spruce_willis")
 			.setRegistryName("grandfather_spruce_willis");
 
+	/**
+	 * @param event The RegistryEvent where we register this mods mobs.
+	 */
 	@SubscribeEvent
+	@SuppressWarnings("unused")
 	public static void registerEntity(RegistryEvent.Register<EntityType<?>> event) {
 		event.getRegistry().registerAll(
 			SPRUCE_WILLIS_THE_XMAS_TREE,
 			GRANDFATHER_SPRUCE_WILLIS
 		);
 
-		EntitySpawnPlacementRegistry.register(SPRUCE_WILLIS_THE_XMAS_TREE, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, CreatureEntity::canSpawnOn);
+		EntitySpawnPlacementRegistry.register(SPRUCE_WILLIS_THE_XMAS_TREE,
+			EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
+			Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, CreatureEntity::canSpawnOn);
 	}
 }

@@ -5,6 +5,9 @@ import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
 import net.minecraft.util.math.MathHelper;
 
+/**
+ * The grandfather willis model. This is a clone of the normal Spruce Willis model.
+ */
 public class GrandfatherWillisModel extends EntityModel<GrandfatherWillisEntity> {
 
 	/**
@@ -207,12 +210,12 @@ public class GrandfatherWillisModel extends EntityModel<GrandfatherWillisEntity>
 
 	/**
 	 * @param entity The entity.
-	 * @param f
-	 * @param f1
-	 * @param f2
-	 * @param f3
-	 * @param f4
-	 * @param f5
+	 * @param f      .
+	 * @param f1     .
+	 * @param f2     .
+	 * @param f3     .
+	 * @param f4     .
+	 * @param f5     .
 	 */
 	@Override
 	public void render(GrandfatherWillisEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
@@ -221,12 +224,12 @@ public class GrandfatherWillisModel extends EntityModel<GrandfatherWillisEntity>
 
 	/**
 	 * @param entity          The entity.
-	 * @param limbSwing
-	 * @param limbSwingAmount
-	 * @param ageInTicks
-	 * @param netHeadYaw
-	 * @param headPitch
-	 * @param scaleFactor
+	 * @param limbSwing       .
+	 * @param limbSwingAmount .
+	 * @param ageInTicks      .
+	 * @param netHeadYaw      .
+	 * @param headPitch       .
+	 * @param scaleFactor     .
 	 */
 	@Override
 	public void setRotationAngles(GrandfatherWillisEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks,
