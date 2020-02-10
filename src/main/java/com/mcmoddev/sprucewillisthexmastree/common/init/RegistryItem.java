@@ -26,7 +26,7 @@ public class RegistryItem {
 		event.getRegistry().registerAll(
 			new SpawnEggItem(RegistryEntity.SPRUCE_WILLIS_THE_XMAS_TREE, Color.GREEN.getRGB(), Color.RED.getRGB(),
 				new Item.Properties().group(ItemGroup.MISC))
-				.setRegistryName(SpruceWillisTheXmasTree.MODID + ":spruce_willis_the_xmas_tree_spawn_egg")
+				.setRegistryName(SpruceWillisTheXmasTree.MODID, "spruce_willis_the_xmas_tree_spawn_egg")
 		);
 	}
 }

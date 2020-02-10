@@ -30,7 +30,7 @@ public class RegistryEntity {
 			.setUpdateInterval(1)
 			.setShouldReceiveVelocityUpdates(true)
 			.build(SpruceWillisTheXmasTree.MODID + ":spruce_willis_the_xmas_tree")
-			.setRegistryName("spruce_willis_the_xmas_tree");
+			.setRegistryName(SpruceWillisTheXmasTree.MODID, "spruce_willis_the_xmas_tree");
 
 	/**
 	 * The grandfather Spruce Willis mob.
@@ -45,7 +45,7 @@ public class RegistryEntity {
 			.setUpdateInterval(1)
 			.setShouldReceiveVelocityUpdates(true)
 			.build(SpruceWillisTheXmasTree.MODID + ":grandfather_spruce_willis")
-			.setRegistryName("grandfather_spruce_willis");
+			.setRegistryName(SpruceWillisTheXmasTree.MODID, "grandfather_spruce_willis");
 
 	/**
 	 * @param event The RegistryEvent where we register this mods mobs.
