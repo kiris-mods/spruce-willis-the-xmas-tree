@@ -3,6 +3,7 @@ package com.mcmoddev.sprucewillisthexmastree.client.rendering;
 import com.mcmoddev.sprucewillisthexmastree.SpruceWillisTheXmasTree;
 import com.mcmoddev.sprucewillisthexmastree.client.models.GrandfatherWillisModel;
 import com.mcmoddev.sprucewillisthexmastree.common.entities.GrandfatherWillisEntity;
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -36,7 +37,7 @@ public class RenderGrandfatherWillis extends MobRenderer<GrandfatherWillisEntity
 	 * @param partialTickTime .
 	 */
 	@Override
-	public void preRenderCallback(GrandfatherWillisEntity entity, float partialTickTime) {
+	public void preRenderCallback(GrandfatherWillisEntity entity, MatrixStack matrixStack, float partialTickTime) {
 		GlStateManager.scaled(2.5D, 2.5D, 2.5D);
 	}
 
@@ -57,8 +58,9 @@ public class RenderGrandfatherWillis extends MobRenderer<GrandfatherWillisEntity
 	 * @param entity The entity itself.
 	 * @return The resource location for the texture.
 	 */
+	@Nonnull
 	@Override
-	protected ResourceLocation getEntityTexture(@Nonnull GrandfatherWillisEntity entity) {
+	public ResourceLocation getEntityTexture(@Nonnull GrandfatherWillisEntity entity) {
 		return resourceLocation;
 	}
 }
