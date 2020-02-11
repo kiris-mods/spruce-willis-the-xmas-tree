@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * The configuration setup class.
  */
-public class Config {
+public class WillisConfig {
 
 	public static final ServerConfig SERVER;
 	public static final ForgeConfigSpec SERVER_SPECIFICATION;

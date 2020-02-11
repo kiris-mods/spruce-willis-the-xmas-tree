@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 @SuppressWarnings("unused")
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = SpruceWillisTheXmasTree.MODID,
 	bus = Mod.EventBusSubscriber.Bus.MOD)
-public class RegistryRendering {
+public class WillisRenderingRegistry {
 
 	/**
 	 * @param event The ModelRegistryEvent where we register our models.
@@ -23,7 +23,7 @@ public class RegistryRendering {
 	@SubscribeEvent
 	@SuppressWarnings("unused")
 	public static void registerModels(ModelRegistryEvent event) {
-		RenderingRegistry.registerEntityRenderingHandler(RegistryEntity.SPRUCE_WILLIS_THE_XMAS_TREE, RenderSpruceWillis::new);
-		RenderingRegistry.registerEntityRenderingHandler(RegistryEntity.GRANDFATHER_SPRUCE_WILLIS, RenderGrandfatherWillis::new);
+		RenderingRegistry.registerEntityRenderingHandler(WillisEntityRegistry.SPRUCE_WILLIS_THE_XMAS_TREE, RenderSpruceWillis::new);
+		RenderingRegistry.registerEntityRenderingHandler(WillisEntityRegistry.GRANDFATHER_SPRUCE_WILLIS, RenderGrandfatherWillis::new);
 	}
 }

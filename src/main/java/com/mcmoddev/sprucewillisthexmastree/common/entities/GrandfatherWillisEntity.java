@@ -3,11 +3,7 @@ package com.mcmoddev.sprucewillisthexmastree.common.entities;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.MoveTowardsVillageGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
@@ -46,6 +42,7 @@ public class GrandfatherWillisEntity extends CreatureEntity {
 	protected void registerAttributes() {
 		super.registerAttributes();
 		getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.20D);
+		getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(75.0D);
 	}
 
 	/**

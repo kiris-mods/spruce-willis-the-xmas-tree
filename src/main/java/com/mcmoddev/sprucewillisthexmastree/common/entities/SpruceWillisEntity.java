@@ -1,15 +1,10 @@
 package com.mcmoddev.sprucewillisthexmastree.common.entities;
 
-import com.mcmoddev.sprucewillisthexmastree.common.init.RegistryEntity;
+import com.mcmoddev.sprucewillisthexmastree.common.init.WillisEntityRegistry;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.MoveTowardsTargetGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -41,7 +36,7 @@ public class SpruceWillisEntity extends CreatureEntity {
 		goalSelector.addGoal(2, new AvoidEntityGoal<>(this, PlayerEntity.class, 6.0F,
 			1.0D, 1.5D));
 		goalSelector.addGoal(2, new MoveTowardsTargetGoal(new GrandfatherWillisEntity(
-			RegistryEntity.GRANDFATHER_SPRUCE_WILLIS, world), 1.0D, 1.5F));
+			WillisEntityRegistry.GRANDFATHER_SPRUCE_WILLIS, world), 1.0D, 1.5F));
 		goalSelector.addGoal(3, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
 		goalSelector.addGoal(4, new LookAtGoal(this, PlayerEntity.class, 8.0F));
 		goalSelector.addGoal(5, new LookRandomlyGoal(this));
@@ -55,6 +50,7 @@ public class SpruceWillisEntity extends CreatureEntity {
 	protected void registerAttributes() {
 		super.registerAttributes();
 		getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
+		getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
 	}
 
 	/**
@@ -68,7 +64,7 @@ public class SpruceWillisEntity extends CreatureEntity {
 	@Override
 	protected boolean processInteract(PlayerEntity player, Hand hand) {
 		ItemStack heldItem = player.getHeldItem(hand);
-		GrandfatherWillisEntity grandWillis = RegistryEntity.GRANDFATHER_SPRUCE_WILLIS.create(world);
+		GrandfatherWillisEntity grandWillis = WillisEntityRegistry.GRANDFATHER_SPRUCE_WILLIS.create(world);
 		if (heldItem.getItem() == Items.BONE_MEAL) {
 			world.playSound(player, prevPosX, prevPosY, prevPosZ, SoundEvents.BLOCK_BELL_USE, getSoundCategory(),
 				1.0F, rand.nextFloat() * 0.4F + 0.8F);
@@ -93,7 +89,7 @@ public class SpruceWillisEntity extends CreatureEntity {
 	 */
 	@Override
 	public void onStruckByLightning(LightningBoltEntity lightningBolt) {
-		GrandfatherWillisEntity grandWillis = RegistryEntity.GRANDFATHER_SPRUCE_WILLIS.create(world);
+		GrandfatherWillisEntity grandWillis = WillisEntityRegistry.GRANDFATHER_SPRUCE_WILLIS.create(world);
 		grandWillis.setLocationAndAngles(prevPosX, prevPosY, prevPosZ, rotationYaw, rotationPitch);
 		if (this.hasCustomName()) {
 			grandWillis.setCustomName(getCustomName());

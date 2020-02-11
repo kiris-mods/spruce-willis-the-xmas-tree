@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.Mod;
  * The Entity Registry we use to register out mobs.
  */
 @Mod.EventBusSubscriber(modid = SpruceWillisTheXmasTree.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class RegistryEntity {
+public class WillisEntityRegistry {
 
 	/**
 	 * The Spruce Willis the Xmas Tree mob.

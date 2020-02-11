@@ -4,7 +4,6 @@ import com.mcmoddev.sprucewillisthexmastree.SpruceWillisTheXmasTree;
 import com.mcmoddev.sprucewillisthexmastree.client.models.GrandfatherWillisModel;
 import com.mcmoddev.sprucewillisthexmastree.common.entities.GrandfatherWillisEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
@@ -38,7 +37,7 @@ public class RenderGrandfatherWillis extends MobRenderer<GrandfatherWillisEntity
 	 */
 	@Override
 	public void preRenderCallback(GrandfatherWillisEntity entity, MatrixStack matrixStack, float partialTickTime) {
-		GlStateManager.scaled(2.5D, 2.5D, 2.5D);
+		matrixStack.scale(2.5F, 2.5F, 2.5F);
 	}
 
 	/**

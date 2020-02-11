@@ -3,8 +3,6 @@ package com.mcmoddev.sprucewillisthexmastree.client.rendering;
 import com.mcmoddev.sprucewillisthexmastree.SpruceWillisTheXmasTree;
 import com.mcmoddev.sprucewillisthexmastree.client.models.SpruceWillisModel;
 import com.mcmoddev.sprucewillisthexmastree.common.entities.SpruceWillisEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
@@ -30,15 +28,6 @@ public class RenderSpruceWillis extends MobRenderer<SpruceWillisEntity, SpruceWi
 	 */
 	public RenderSpruceWillis(EntityRendererManager rendererManager) {
 		super(rendererManager, new SpruceWillisModel(), 0.8F);
-	}
-
-	/**
-	 * @param entity          The entity.
-	 * @param partialTickTime .
-	 */
-	@Override
-	public void preRenderCallback(SpruceWillisEntity entity, MatrixStack matrixStack, float partialTickTime) {
-		GlStateManager.scaled(1.0D, 1.0D, 1.0D);
 	}
 
 	/**

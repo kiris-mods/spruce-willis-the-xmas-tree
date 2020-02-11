@@ -1,6 +1,6 @@
 package com.mcmoddev.sprucewillisthexmastree;
 
-import com.mcmoddev.sprucewillisthexmastree.common.init.Config;
+import com.mcmoddev.sprucewillisthexmastree.common.init.WillisConfig;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -30,7 +30,7 @@ public class SpruceWillisTheXmasTree {
 	public SpruceWillisTheXmasTree() {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::fingerprintViolation);
 		ModLoadingContext modLoadingContext = ModLoadingContext.get();
-		modLoadingContext.registerConfig(ModConfig.Type.SERVER, Config.SERVER_SPECIFICATION);
+		modLoadingContext.registerConfig(ModConfig.Type.SERVER, WillisConfig.SERVER_SPECIFICATION);
 	}
 
 	/**
