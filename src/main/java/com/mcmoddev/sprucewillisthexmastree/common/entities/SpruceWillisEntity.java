@@ -70,11 +70,11 @@ public class SpruceWillisEntity extends CreatureEntity {
 		ItemStack heldItem = player.getHeldItem(hand);
 		GrandfatherWillisEntity grandWillis = RegistryEntity.GRANDFATHER_SPRUCE_WILLIS.create(world);
 		if (heldItem.getItem() == Items.BONE_MEAL) {
-			world.playSound(player, posX, posY, posZ, SoundEvents.BLOCK_BELL_USE, getSoundCategory(),
+			world.playSound(player, prevPosX, prevPosY, prevPosZ, SoundEvents.BLOCK_BELL_USE, getSoundCategory(),
 				1.0F, rand.nextFloat() * 0.4F + 0.8F);
 			player.swingArm(hand);
 			if (!world.isRemote) {
-				grandWillis.setLocationAndAngles(posX, posY, posZ, rotationYaw, rotationPitch);
+				grandWillis.setLocationAndAngles(prevPosX, prevPosY, prevPosZ, rotationYaw, rotationPitch);
 				world.addEntity(grandWillis);
 				remove();
 				if (!player.abilities.isCreativeMode) {
@@ -94,7 +94,7 @@ public class SpruceWillisEntity extends CreatureEntity {
 	@Override
 	public void onStruckByLightning(LightningBoltEntity lightningBolt) {
 		GrandfatherWillisEntity grandWillis = RegistryEntity.GRANDFATHER_SPRUCE_WILLIS.create(world);
-		grandWillis.setLocationAndAngles(posX, posY, posZ, rotationYaw, rotationPitch);
+		grandWillis.setLocationAndAngles(prevPosX, prevPosY, prevPosZ, rotationYaw, rotationPitch);
 		if (this.hasCustomName()) {
 			grandWillis.setCustomName(getCustomName());
 			grandWillis.setCustomNameVisible(isCustomNameVisible());
