@@ -1,6 +1,21 @@
-[![MMD Discord](https://img.shields.io/badge/Discord-MMD-green.svg?style=flat-square&logo=Discord)](https://discord.mcmoddev.com)
-[![Download Count](http://cf.way2muchnoise.eu/full_spruce-willis-the-xmas-tree_downloads.svg)](http://minecraft.curseforge.com/projects/spruce-willis-the-xmas-tree)
-[![Minecraft Versions](http://cf.way2muchnoise.eu/versions/Minecraft_spruce-willis-the-xmas-tree_all.svg)](http://minecraft.curseforge.com/projects/spruce-willis-the-xmas-tree)
-[![Build Status](https://ci.mcmoddev.com/view/ProxyNeko/job/ProxyNeko/job/Spruce%20Willis%20The%20Xmas%20Tree/badge/icon?style=flat-square)](https://ci.mcmoddev.com/view/ProxyNeko/job/ProxyNeko/job/Spruce%20Willis%20The%20Xmas%20Tree/)
+<h1 align="center">Spruce Willis the Xmas Tree</h1>  
+<h5 align="center">It's the time of year when trees come to life!</h5>  
+<h5 align="center">Visit https://tophat.cat/swtxt/ for more information.</h5>
+    
+<p align="center">
+<a href="https://discord.tophat.cat">
+    <img src="https://img.shields.io/badge/Discord-TopHatCat-green.svg?style=flat&logo=Discord"/>
+</a>  
 
-# Spruce Willis the Xmas Tree
+<a href="https://www.curseforge.com/minecraft/mc-mods/spruce-willis-the-xmas-tree">
+    <img src="http://cf.way2muchnoise.eu/full_spruce-willis-the-xmas-tree_downloads.svg"/>
+</a>
+
+<a href="https://www.curseforge.com/minecraft/mc-mods/spruce-willis-the-xmas-tree">
+    <img src="http://cf.way2muchnoise.eu/versions/Minecraft_spruce-willis-the-xmas-tree_all.svg"/>
+</a>  
+
+<a href="https://github.com/tophatcats-mods/spruce-willis-the-xmas-tree/commits/master">
+    <img src="https://img.shields.io/github/last-commit/tophatcats-mods/spruce-willis-the-xmas-tree.svg">
+</a>  
+</p>
