@@ -1,7 +1,8 @@
 modLoader="javafml"
-loaderVersion="[28,)"
-updateJSONURL="https://raw.githubusercontent.com/MinecraftModDevelopmentMods/spruce-willis-the-xmas-tree/master/update.json"
-issueTrackerURL="https://github.com/MinecraftModDevelopmentMods/spruce-willis-the-xmas-tree/issues"
+loaderVersion="[36,)"
+license="LGPL-v2.1"
+updateJSONURL="https://tophat.cat/spruce-willis-the-xmas-tree/update.json"
+issueTrackerURL="https://github.com/tophatcats-mods/spruce-willis-the-xmas-tree/issues"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/spruce-willis-the-xmas-tree"
 #logoFile=""
 credits="ProxyNeko, Coda"
@@ -18,12 +19,12 @@ Who doesn't love Spruce Willis!
 [[dependencies.creepy-creepers]]
    modId="forge"
    mandatory=true
-   versionRange="[31,)"
+   versionRange="[36,)"
    ordering="NONE"
    side="BOTH"
 [[dependencies.spruce-willis-the-xmas-tree]]
    modId="minecraft"
    mandatory=true
-   versionRange="[1.15,)"
+   versionRange="[1.16,)"
    ordering="NONE"
    side="BOTH"
