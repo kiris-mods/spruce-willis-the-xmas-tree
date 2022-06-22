@@ -1,6 +1,26 @@
-package cat.tophat.sprucewillisthexmastree.client.models;
+/*
+ * Spruce Willis the Xmas Tree - https://github.com/tophatcats-mods/spruce-willis-the-xmas-tree
+ * Copyright (C) 2016-2022 <KiriCattus>
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation;
+ * Specifically version 2.1 of the License.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
+ * USA
+ * https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
+ */
+package dev.tophatcat.sprucewillisthexmastree.client.models;
 
-import cat.tophat.sprucewillisthexmastree.common.entities.SpruceWillisEntity;
+import dev.tophatcat.sprucewillisthexmastree.common.entities.GrandfatherWillisEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.EntityModel;
@@ -10,9 +30,9 @@ import net.minecraft.util.math.MathHelper;
 import javax.annotation.Nonnull;
 
 /**
- * Model for the Spruce Willis the Xmas Tree mob made by Coda as a Winterjam commission.
+ * The grandfather willis model. This is a clone of the normal Spruce Willis model.
  */
-public class SpruceWillisModel extends EntityModel<SpruceWillisEntity> {
+public class GrandfatherWillisModel extends EntityModel<GrandfatherWillisEntity> {
 
     /**
      * The entities main body.
@@ -107,7 +127,7 @@ public class SpruceWillisModel extends EntityModel<SpruceWillisEntity> {
     /**
      * The model itself and the texture properties.
      */
-    public SpruceWillisModel() {
+    public GrandfatherWillisModel() {
         textureWidth = 128;
         textureHeight = 128;
 
@@ -213,17 +233,18 @@ public class SpruceWillisModel extends EntityModel<SpruceWillisEntity> {
     }
 
     /**
-     * @param matrixStack .
-     * @param i           .
-     * @param i1          .
-     * @param v           .
-     * @param v1          .
-     * @param v2          .
-     * @param v3          .
+     * @param matrixStack    .
+     * @param iVertexBuilder .
+     * @param i              .
+     * @param i1             .
+     * @param v              .
+     * @param v1             .
+     * @param v2             .
+     * @param v3             .
      */
     @Override
-    public void render(@Nonnull MatrixStack matrixStack, @Nonnull IVertexBuilder iVertexBuilder, int i, int i1,
-                       float v, float v1, float v2, float v3) {
+    public void render(@Nonnull MatrixStack matrixStack, @Nonnull IVertexBuilder iVertexBuilder,
+                       int i, int i1, float v, float v1, float v2, float v3) {
         body.render(matrixStack, iVertexBuilder, i, i1, v, v1, v2, v3);
     }
 
@@ -236,7 +257,7 @@ public class SpruceWillisModel extends EntityModel<SpruceWillisEntity> {
      * @param headPitch       .
      */
     @Override
-    public void setRotationAngles(@Nonnull SpruceWillisEntity entity, float limbSwing, float limbSwingAmount,
+    public void setRotationAngles(@Nonnull GrandfatherWillisEntity entity, float limbSwing, float limbSwingAmount,
                                   float ageInTicks, float netHeadYaw, float headPitch) {
         legFrontLeft.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 0.5F * limbSwingAmount;
         legFrontRight.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F
