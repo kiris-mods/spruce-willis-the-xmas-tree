@@ -21,15 +21,10 @@
 package dev.tophatcat.sprucewillisthexmastree;
 
 import dev.tophatcat.sprucewillisthexmastree.client.WillisRenderingRegistry;
-import dev.tophatcat.sprucewillisthexmastree.init.WillisConfig;
 import dev.tophatcat.sprucewillisthexmastree.init.WillisRegistry;
-import dev.tophatcat.sprucewillisthexmastree.init.WillisSpawnHandler;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 
@@ -40,14 +35,11 @@ public class SpruceWillisTheXmasTree {
     public static final String MOD_ID = "sprucewillisthexmastree";
 
     public SpruceWillisTheXmasTree() {
-        ModLoadingContext modLoadingContext = ModLoadingContext.get();
-        IEventBus mod = FMLJavaModLoadingContext.get().getModEventBus(), forge = MinecraftForge.EVENT_BUS;
-        modLoadingContext.registerConfig(ModConfig.Type.SERVER, WillisConfig.SERVER_SPEC);
+        IEventBus mod = FMLJavaModLoadingContext.get().getModEventBus();
         WillisRegistry.ENTITIES.register(mod);
         WillisRegistry.ITEMS.register(mod);
         mod.addListener(WillisRegistry::registerAttributes);
         mod.addListener(WillisRegistry::registerSpawns);
-        forge.addListener(WillisSpawnHandler::biomeLoad);
         if (FMLEnvironment.dist == Dist.CLIENT) {
             mod.addListener(WillisRenderingRegistry::registerEntityModels);
             mod.addListener(WillisRenderingRegistry::registerLayerDefinition);

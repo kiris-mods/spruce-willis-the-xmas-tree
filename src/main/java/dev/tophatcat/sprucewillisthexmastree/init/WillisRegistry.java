@@ -45,7 +45,7 @@ public class WillisRegistry {
         ForgeRegistries.ITEMS, SpruceWillisTheXmasTree.MOD_ID);
 
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(
-        ForgeRegistries.ENTITIES, SpruceWillisTheXmasTree.MOD_ID);
+        ForgeRegistries.ENTITY_TYPES, SpruceWillisTheXmasTree.MOD_ID);
 
     public static final RegistryObject<EntityType<SpruceWillisEntity>> SPRUCE_WILLIS_THE_XMAS_TREE = ENTITIES.register(
         "spruce_willis_the_xmas_tree", () -> EntityType.Builder.of(
