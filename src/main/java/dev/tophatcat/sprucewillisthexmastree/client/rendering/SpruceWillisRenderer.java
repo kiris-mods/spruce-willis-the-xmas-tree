@@ -23,19 +23,20 @@ package dev.tophatcat.sprucewillisthexmastree.client.rendering;
 import dev.tophatcat.sprucewillisthexmastree.SpruceWillisTheXmasTree;
 import dev.tophatcat.sprucewillisthexmastree.client.models.SpruceWillisModel;
 import dev.tophatcat.sprucewillisthexmastree.entities.SpruceWillisEntity;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-public class RenderSpruceWillis extends MobRenderer<SpruceWillisEntity, SpruceWillisModel> {
+public class SpruceWillisRenderer extends MobRenderer<SpruceWillisEntity, SpruceWillisModel<SpruceWillisEntity>> {
 
     private static final ResourceLocation RESOURCE_LOCATION = new ResourceLocation(SpruceWillisTheXmasTree.MOD_ID,
         "textures/entity/spruce_willis_the_xmas_tree.png");
 
-    public RenderSpruceWillis(EntityRendererManager rendererManager) {
-        super(rendererManager, new SpruceWillisModel(), 0.8F);
+    public SpruceWillisRenderer(EntityRendererProvider.Context context) {
+        super(context, new SpruceWillisModel<>(
+            context.bakeLayer(SpruceWillisModel.LAYER_LOCATION)), 0.8F);
     }
 
     @Nonnull

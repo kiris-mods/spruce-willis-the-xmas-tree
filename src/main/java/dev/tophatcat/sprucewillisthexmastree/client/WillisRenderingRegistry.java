@@ -20,18 +20,24 @@
  */
 package dev.tophatcat.sprucewillisthexmastree.client;
 
-import dev.tophatcat.sprucewillisthexmastree.client.rendering.RenderGrandfatherWillis;
-import dev.tophatcat.sprucewillisthexmastree.client.rendering.RenderSpruceWillis;
+import dev.tophatcat.sprucewillisthexmastree.client.models.GrandfatherWillisModel;
+import dev.tophatcat.sprucewillisthexmastree.client.models.SpruceWillisModel;
+import dev.tophatcat.sprucewillisthexmastree.client.rendering.GrandfatherWillisRenderer;
+import dev.tophatcat.sprucewillisthexmastree.client.rendering.SpruceWillisRenderer;
 import dev.tophatcat.sprucewillisthexmastree.init.WillisRegistry;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 
 public class WillisRenderingRegistry {
 
-    public static void registerModels(FMLClientSetupEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(WillisRegistry.SPRUCE_WILLIS_THE_XMAS_TREE.get(),
-            RenderSpruceWillis::new);
-        RenderingRegistry.registerEntityRenderingHandler(WillisRegistry.GRANDFATHER_SPRUCE_WILLIS.get(),
-            RenderGrandfatherWillis::new);
+    public static void registerEntityModels(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(WillisRegistry.SPRUCE_WILLIS_THE_XMAS_TREE.get(), SpruceWillisRenderer::new);
+        event.registerEntityRenderer(WillisRegistry.GRANDFATHER_SPRUCE_WILLIS.get(), GrandfatherWillisRenderer::new);
+    }
+
+    public static void registerLayerDefinition(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(SpruceWillisModel.LAYER_LOCATION,
+            GrandfatherWillisModel::createBodyLayer);
+        event.registerLayerDefinition(SpruceWillisModel.LAYER_LOCATION,
+            GrandfatherWillisModel::createBodyLayer);
     }
 }

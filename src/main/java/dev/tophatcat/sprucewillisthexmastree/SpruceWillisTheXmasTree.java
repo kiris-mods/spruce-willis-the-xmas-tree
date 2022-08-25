@@ -49,7 +49,8 @@ public class SpruceWillisTheXmasTree {
         mod.addListener(WillisRegistry::registerSpawns);
         forge.addListener(WillisSpawnHandler::biomeLoad);
         if (FMLEnvironment.dist == Dist.CLIENT) {
-            mod.addListener(WillisRenderingRegistry::registerModels);
+            mod.addListener(WillisRenderingRegistry::registerEntityModels);
+            mod.addListener(WillisRenderingRegistry::registerLayerDefinition);
         }
     }
 }

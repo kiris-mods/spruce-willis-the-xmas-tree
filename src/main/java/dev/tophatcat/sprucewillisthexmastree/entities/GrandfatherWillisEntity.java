@@ -20,26 +20,27 @@
  */
 package dev.tophatcat.sprucewillisthexmastree.entities;
 
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.MoveThroughVillageGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.world.World;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.MoveThroughVillageGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ambient.AmbientCreature;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 
 import javax.annotation.Nonnull;
 
-public class GrandfatherWillisEntity extends CreatureEntity {
+public class GrandfatherWillisEntity extends PathfinderMob {
 
-    public GrandfatherWillisEntity(EntityType<? extends CreatureEntity> type, World level) {
+    public GrandfatherWillisEntity(EntityType<? extends PathfinderMob> type, Level level) {
         super(type, level);
     }
 
@@ -47,18 +48,18 @@ public class GrandfatherWillisEntity extends CreatureEntity {
     protected void registerGoals() {
         goalSelector.addGoal(1, new MoveThroughVillageGoal(this, 1.0F,
             false, 4, this::canBreakDoors));
-        goalSelector.addGoal(3, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-        goalSelector.addGoal(4, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-        goalSelector.addGoal(5, new LookRandomlyGoal(this));
-        goalSelector.addGoal(6, new SwimGoal(this));
+        goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        goalSelector.addGoal(5, new RandomLookAroundGoal(this));
+        goalSelector.addGoal(6, new FloatGoal(this));
     }
 
     private boolean canBreakDoors() {
         return false;
     }
 
-    public static AttributeModifierMap.MutableAttribute grandfatherWillisAttributes() {
-        return CreatureEntity.createMobAttributes()
+    public static AttributeSupplier.Builder grandfatherWillisAttributes() {
+        return AmbientCreature.createMobAttributes()
             .add(Attributes.MAX_HEALTH, 75.0D)
             .add(Attributes.MOVEMENT_SPEED, 0.20D);
     }

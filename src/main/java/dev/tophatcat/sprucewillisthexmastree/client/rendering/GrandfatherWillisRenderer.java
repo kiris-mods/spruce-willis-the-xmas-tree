@@ -20,26 +20,27 @@
  */
 package dev.tophatcat.sprucewillisthexmastree.client.rendering;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import dev.tophatcat.sprucewillisthexmastree.SpruceWillisTheXmasTree;
 import dev.tophatcat.sprucewillisthexmastree.client.models.GrandfatherWillisModel;
 import dev.tophatcat.sprucewillisthexmastree.entities.GrandfatherWillisEntity;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-public class RenderGrandfatherWillis extends MobRenderer<GrandfatherWillisEntity, GrandfatherWillisModel> {
+public class GrandfatherWillisRenderer extends MobRenderer<GrandfatherWillisEntity, GrandfatherWillisModel<GrandfatherWillisEntity>> {
 
     private static final ResourceLocation RESOURCE_LOCATION = new ResourceLocation(SpruceWillisTheXmasTree.MOD_ID,
         "textures/entity/spruce_willis_the_xmas_tree.png");
 
-    public RenderGrandfatherWillis(EntityRendererManager rendererManager) {
-        super(rendererManager, new GrandfatherWillisModel(), 0.8F);
+    public GrandfatherWillisRenderer(EntityRendererProvider.Context context) {
+        super(context, new GrandfatherWillisModel<>(
+            context.bakeLayer(GrandfatherWillisModel.LAYER_LOCATION)), 0.8F);
     }
 
-    protected void scale(@Nonnull GrandfatherWillisEntity entity, @Nonnull MatrixStack matrixStack,
+    protected void scale(@Nonnull GrandfatherWillisEntity entity, @Nonnull PoseStack matrixStack,
                          float partialTickTime) {
         matrixStack.scale(2.5F, 2.5F, 2.5F);
     }

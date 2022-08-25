@@ -20,20 +20,21 @@
  */
 package dev.tophatcat.sprucewillisthexmastree.init;
 
-import net.minecraft.entity.EntityClassification;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.MobSpawnInfo;
+
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class WillisSpawnHandler {
 
     public static void biomeLoad(BiomeLoadingEvent event) {
         ResourceLocation name = event.getName();
-        if (name != null && event.getCategory() != Biome.Category.NETHER
-            || event.getCategory() != Biome.Category.THEEND) {
-            event.getSpawns().getSpawner(EntityClassification.CREATURE)
-                .add(new MobSpawnInfo.Spawners(
+        if (name != null && event.getCategory() != Biome.BiomeCategory.NETHER
+            || event.getCategory() != Biome.BiomeCategory.THEEND) {
+            event.getSpawns().getSpawner(MobCategory.CREATURE)
+                .add(new MobSpawnSettings.SpawnerData(
                     WillisRegistry.SPRUCE_WILLIS_THE_XMAS_TREE.get(),
                     WillisConfig.CONFIG.weightMultiplierWillis.get(),
                     WillisConfig.CONFIG.minSpawnGroupWillis.get(),

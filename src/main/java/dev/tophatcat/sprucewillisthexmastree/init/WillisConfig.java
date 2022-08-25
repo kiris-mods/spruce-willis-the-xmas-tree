@@ -45,7 +45,7 @@ public class WillisConfig {
             builder.comment("Set how much of a chance Spruce Willis will have to spawn in the world and the min/max "
                 + "group size. (Set Spawn Weight to 0 to prevent them spawning)");
             weightMultiplierWillis = builder.defineInRange("Spawn Weight",
-                20, 0, 500);
+                15, 0, 500);
             minSpawnGroupWillis = builder.defineInRange("Minimum Group Spawn Count",
                 1, 1, 64);
             maxSpawnGroupWillis = builder.defineInRange("Maximum Group Spawn Count",

@@ -23,19 +23,19 @@ package dev.tophatcat.sprucewillisthexmastree.init;
 import dev.tophatcat.sprucewillisthexmastree.SpruceWillisTheXmasTree;
 import dev.tophatcat.sprucewillisthexmastree.entities.GrandfatherWillisEntity;
 import dev.tophatcat.sprucewillisthexmastree.entities.SpruceWillisEntity;
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntitySpawnPlacementRegistry;
-import net.minecraft.entity.EntityType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.SpawnEggItem;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.gen.Heightmap;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.ambient.AmbientCreature;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -49,7 +49,7 @@ public class WillisRegistry {
 
     public static final RegistryObject<EntityType<SpruceWillisEntity>> SPRUCE_WILLIS_THE_XMAS_TREE = ENTITIES.register(
         "spruce_willis_the_xmas_tree", () -> EntityType.Builder.of(
-                SpruceWillisEntity::new, EntityClassification.CREATURE)
+                SpruceWillisEntity::new, MobCategory.CREATURE)
             .sized(1.0F, 3.0F)
             .setTrackingRange(80)
             .setUpdateInterval(1)
@@ -60,7 +60,7 @@ public class WillisRegistry {
 
     public static final RegistryObject<EntityType<GrandfatherWillisEntity>> GRANDFATHER_SPRUCE_WILLIS
         = ENTITIES.register("grandfather_spruce_willis_the_xmas_tree", () -> EntityType.Builder.of(
-            GrandfatherWillisEntity::new, EntityClassification.CREATURE)
+            GrandfatherWillisEntity::new, MobCategory.CREATURE)
         .fireImmune()
         .sized(2.0F, 7.0F)
         .setTrackingRange(80)
@@ -70,13 +70,13 @@ public class WillisRegistry {
 
     private static final RegistryObject<SpawnEggItem> SPRUCE_WILLIS_THE_XMAS_TREE_SPAWN_EGG = ITEMS.register(
         "spruce_willis_the_xmas_tree_spawn_egg", () -> new ForgeSpawnEggItem(SPRUCE_WILLIS_THE_XMAS_TREE,
-            0x00FF00, 0xff0000, new Item.Properties().tab(ItemGroup.TAB_MISC))
+            0x00FF00, 0xff0000, new Item.Properties().tab(CreativeModeTab.TAB_MISC))
     );
 
     public static void registerSpawns(FMLCommonSetupEvent event) {
-        EntitySpawnPlacementRegistry.register(WillisRegistry.SPRUCE_WILLIS_THE_XMAS_TREE.get(),
-            EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
-            Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, CreatureEntity::checkMobSpawnRules);
+        SpawnPlacements.register(WillisRegistry.SPRUCE_WILLIS_THE_XMAS_TREE.get(),
+            SpawnPlacements.Type.ON_GROUND,
+            Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AmbientCreature::checkMobSpawnRules);
     }
 
     public static void registerAttributes(EntityAttributeCreationEvent event) {
