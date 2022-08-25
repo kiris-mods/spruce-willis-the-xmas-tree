@@ -54,7 +54,8 @@ public class SpruceWillisEntity extends PathfinderMob {
 
     @Override
     protected void registerGoals() {
-        goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class, 6.0F, 1.0D, 1.5D));
+        goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class,
+            6.0F, 1.0D, 1.5D));
         goalSelector.addGoal(2, new MoveTowardsTargetGoal(new GrandfatherWillisEntity(
             WillisRegistry.GRANDFATHER_SPRUCE_WILLIS.get(), level), 1.0D, 1.5F));
         goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
@@ -73,15 +74,11 @@ public class SpruceWillisEntity extends PathfinderMob {
     @Override
     protected InteractionResult mobInteract(Player player, @Nonnull InteractionHand hand) {
         ItemStack heldItem = player.getItemInHand(hand);
-        GrandfatherWillisEntity grandWillis = WillisRegistry.GRANDFATHER_SPRUCE_WILLIS.get().create(level);
         if (heldItem.getItem() == Items.BONE_MEAL) {
             level.playSound(player, getX(), getY(), getZ(), SoundEvents.BELL_RESONATE, getSoundSource(),
                 1.0F, random.nextFloat() * 0.4F + 0.8F);
             if (!level.isClientSide) {
-                assert grandWillis != null;
-                grandWillis.moveTo(xOld, yOld, zOld, yRotO, xRotO);
-                level.addFreshEntity(grandWillis);
-                remove(RemovalReason.DISCARDED);
+                convertTo(WillisRegistry.GRANDFATHER_SPRUCE_WILLIS.get(), false);
                 if (!player.getAbilities().instabuild) {
                     heldItem.shrink(1);
                 }
@@ -95,11 +92,7 @@ public class SpruceWillisEntity extends PathfinderMob {
 
     @Override
     public void thunderHit(@Nonnull ServerLevel world, @Nonnull LightningBolt lightningBolt) {
-        GrandfatherWillisEntity grandWillis = WillisRegistry.GRANDFATHER_SPRUCE_WILLIS.get().create(world);
-        assert grandWillis != null;
-        grandWillis.moveTo(xOld, yOld, zOld, yRotO, xRotO);
-        level.addFreshEntity(grandWillis);
-        remove(RemovalReason.DISCARDED);
+        convertTo(WillisRegistry.GRANDFATHER_SPRUCE_WILLIS.get(), false);
     }
 
     @Override
