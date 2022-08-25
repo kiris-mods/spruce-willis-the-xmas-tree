@@ -20,31 +20,18 @@
  */
 package dev.tophatcat.sprucewillisthexmastree.client;
 
-import dev.tophatcat.sprucewillisthexmastree.SpruceWillisTheXmasTree;
 import dev.tophatcat.sprucewillisthexmastree.client.rendering.RenderGrandfatherWillis;
 import dev.tophatcat.sprucewillisthexmastree.client.rendering.RenderSpruceWillis;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import dev.tophatcat.sprucewillisthexmastree.init.WillisRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-/**
- * The rendering class for this mod.
- */
-@SuppressWarnings("unused")
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = SpruceWillisTheXmasTree.MOD_ID,
-    bus = Mod.EventBusSubscriber.Bus.MOD)
 public class WillisRenderingRegistry {
 
-    /**
-     * Register our things for rendering.
-     */
-    @SubscribeEvent
-    public static void registerModels(ModelRegistryEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(SpruceWillisTheXmasTree.SPRUCE_WILLIS_THE_XMAS_TREE,
+    public static void registerModels(FMLClientSetupEvent event) {
+        RenderingRegistry.registerEntityRenderingHandler(WillisRegistry.SPRUCE_WILLIS_THE_XMAS_TREE.get(),
             RenderSpruceWillis::new);
-        RenderingRegistry.registerEntityRenderingHandler(SpruceWillisTheXmasTree.GRANDFATHER_SPRUCE_WILLIS,
+        RenderingRegistry.registerEntityRenderingHandler(WillisRegistry.GRANDFATHER_SPRUCE_WILLIS.get(),
             RenderGrandfatherWillis::new);
     }
 }

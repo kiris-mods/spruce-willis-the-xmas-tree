@@ -27,7 +27,7 @@ group = "${mod_group}" // http://maven.apache.org/guides/mini/guide-naming-conve
 archivesBaseName = "${mod_name}-Forge-${minecraft_version}"
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
@@ -69,7 +69,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', mod_id
+            //property 'forge.enabledGameTestNamespaces', mod_id
 
             // These arguments allow for optional authentication with Mojang servers.
             // If you want to authenticate, put these properties in GRADLE_HOME/gradle.properties.
@@ -96,7 +96,7 @@ minecraft {
 
             args '--singleplayer', "yes", '--nogui', "true"
 
-            property 'forge.enabledGameTestNamespaces', mod_id
+            //property 'forge.enabledGameTestNamespaces', mod_id
 
             mods.create("${mod_id}").source(sourceSets.main)
         }
@@ -113,7 +113,7 @@ minecraft {
 
             args '--singleplayer', "yes", '--nogui', "true"
 
-            property 'forge.enabledGameTestNamespaces', mod_id
+            //property 'forge.enabledGameTestNamespaces', mod_id
 
             mods.create("${mod_id}").source(sourceSets.main)
         }
