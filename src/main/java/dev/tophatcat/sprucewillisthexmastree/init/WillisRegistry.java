@@ -29,11 +29,14 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.ambient.AmbientCreature;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.ForgeSpawnEggItem;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -70,17 +73,27 @@ public class WillisRegistry {
 
     private static final RegistryObject<SpawnEggItem> SPRUCE_WILLIS_THE_XMAS_TREE_SPAWN_EGG = ITEMS.register(
         "spruce_willis_the_xmas_tree_spawn_egg", () -> new ForgeSpawnEggItem(SPRUCE_WILLIS_THE_XMAS_TREE,
-            0x00FF00, 0xff0000, new Item.Properties().tab(CreativeModeTab.TAB_MISC))
+            0x00FF00, 0xff0000, new Item.Properties())
     );
 
-    public static void registerSpawns(FMLCommonSetupEvent event) {
-        SpawnPlacements.register(WillisRegistry.SPRUCE_WILLIS_THE_XMAS_TREE.get(),
+    public static void registerSpawns(SpawnPlacementRegisterEvent event) {
+        event.register(
+            WillisRegistry.SPRUCE_WILLIS_THE_XMAS_TREE.get(),
             SpawnPlacements.Type.ON_GROUND,
-            Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AmbientCreature::checkMobSpawnRules);
+            Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+            AmbientCreature::checkMobSpawnRules,
+            SpawnPlacementRegisterEvent.Operation.OR
+        );
     }
 
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(SPRUCE_WILLIS_THE_XMAS_TREE.get(), SpruceWillisEntity.spruceWillisAttributes().build());
         event.put(GRANDFATHER_SPRUCE_WILLIS.get(), GrandfatherWillisEntity.grandfatherWillisAttributes().build());
+    }
+
+    public static void addToCreativeTabs(CreativeModeTabEvent.BuildContents event) {
+        if (event.getTab() == CreativeModeTabs.SPAWN_EGGS) {
+            event.accept(SPRUCE_WILLIS_THE_XMAS_TREE_SPAWN_EGG.get());
+        }
     }
 }
