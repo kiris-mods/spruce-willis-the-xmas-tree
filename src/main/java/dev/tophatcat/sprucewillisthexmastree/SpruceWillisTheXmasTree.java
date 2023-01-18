@@ -31,7 +31,6 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 @Mod(SpruceWillisTheXmasTree.MOD_ID)
 public class SpruceWillisTheXmasTree {
 
-
     public static final String MOD_ID = "sprucewillisthexmastree";
 
     public SpruceWillisTheXmasTree() {
@@ -43,6 +42,7 @@ public class SpruceWillisTheXmasTree {
         if (FMLEnvironment.dist == Dist.CLIENT) {
             mod.addListener(WillisRenderingRegistry::registerEntityModels);
             mod.addListener(WillisRenderingRegistry::registerLayerDefinition);
+            mod.addListener(WillisRegistry::addToCreativeTabs);
         }
     }
 }
