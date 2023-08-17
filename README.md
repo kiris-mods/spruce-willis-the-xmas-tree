@@ -14,7 +14,7 @@
 </a>
 
 <h3>
-A small mod created during MMD's December WinterJam 2019 modding event!
+A small mod created during the WinterJam 2019 modding event!
 </h3>
 
 <h3>It's that time of year again, we need a new Christmas tree for the presents to go under! So lets go see if we can catch one wandering around in the forest!</h3>
