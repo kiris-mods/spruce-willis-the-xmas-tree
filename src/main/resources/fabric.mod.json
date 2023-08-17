@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "sprucewillisthexmastree",
+  "version": "${version}",
+  "name": "Spruce Willis the Xmas Tree",
+  "description": "Christmas tree mobs named Spruce Willis, this is just a coincidence no?",
+  "authors": [
+    "Coda1552",
+    {
+      "name": "KiriCattus",
+      "contact": {
+        "github": "KiriCattus",
+        "homepage": "https://tophatcat.dev"
+      }
+    }
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/sprucewillisthexmastree",
+    "issues": "https://github.com/tophatcats-mods/spruce-willis-the-xmas-tree/issues",
+    "sources": "https://github.com/tophatcats-mods/spruce-willis-the-xmas-tree"
+  },
+  "license": "LGPL-2.1",
+  "icon": "assets/sprucewillisthexmastree/logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.tophatcat.sprucewillisthexmastree.SpruceWillisTheXmasTree"
+    ],
+    "client": [
+      "dev.tophatcat.sprucewillisthexmastree.client.SpruceClientInit"
+    ]
+  },
+
+  "depends": {
+    "fabricloader": ">=0.14.22",
+    "minecraft": ">=1.19.4",
+    "java": ">=17",
+    "fabric-api": ">=0.87.0+1.19.4"
+  },
+
+  "suggests": {
+    "modmenu": "*"
+  },
+
+  "custom": {
+    "mc-publish": {
+      "loaders": ["fabric", "quilt"],
+      "curseforge": 354046,
+      "modrinth": "E4DbrlAA"
+    },
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.tophatcat.dev",
+        "modmenu.modrinth": "https://modrinth.com/mod/sprucewillisthexmastree",
+        "modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/spruce-willis-the-xmas-tree"
+      },
+      "update_checker": true
+    }
+  }
+}

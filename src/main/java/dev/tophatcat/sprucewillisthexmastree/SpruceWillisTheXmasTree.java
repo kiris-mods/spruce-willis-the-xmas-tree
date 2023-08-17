@@ -1,6 +1,6 @@
 /*
  * Spruce Willis the Xmas Tree - https://github.com/tophatcats-mods/spruce-willis-the-xmas-tree
- * Copyright (C) 2016-2023 <KiriCattus>
+ * Copyright (C) 2013-2023 <KiriCattus>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,29 +20,66 @@
  */
 package dev.tophatcat.sprucewillisthexmastree;
 
-import dev.tophatcat.sprucewillisthexmastree.client.WillisRenderingRegistry;
-import dev.tophatcat.sprucewillisthexmastree.init.WillisRegistry;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLEnvironment;
+import dev.tophatcat.sprucewillisthexmastree.entities.EntityGrandfatherWillis;
+import dev.tophatcat.sprucewillisthexmastree.entities.EntitySpruceWillis;
+import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.item.SpawnEggItem;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.tag.BiomeTags;
+import net.minecraft.util.Identifier;
 
-@Mod(SpruceWillisTheXmasTree.MOD_ID)
-public class SpruceWillisTheXmasTree {
+public class SpruceWillisTheXmasTree implements ModInitializer {
 
     public static final String MOD_ID = "sprucewillisthexmastree";
 
-    public SpruceWillisTheXmasTree() {
-        IEventBus mod = FMLJavaModLoadingContext.get().getModEventBus();
-        WillisRegistry.ENTITIES.register(mod);
-        WillisRegistry.ITEMS.register(mod);
-        mod.addListener(WillisRegistry::registerAttributes);
-        mod.addListener(WillisRegistry::registerSpawns);
-        if (FMLEnvironment.dist == Dist.CLIENT) {
-            mod.addListener(WillisRenderingRegistry::registerEntityModels);
-            mod.addListener(WillisRenderingRegistry::registerLayerDefinition);
-            mod.addListener(WillisRegistry::addToCreativeTabs);
-        }
+    public static final EntityType<EntitySpruceWillis> SPRUCE_WILLIS_THE_XMAS_TREE = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(SpruceWillisTheXmasTree.MOD_ID, "spruce_willis_the_xmas_tree"),
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, EntitySpruceWillis::new)
+                    .dimensions(EntityDimensions.fixed(1.0F, 3.0F))
+                    .trackRangeChunks(1)
+                    .forceTrackedVelocityUpdates(true)
+                    .trackRangeBlocks(80)
+                    .build());
+
+    public static final EntityType<EntityGrandfatherWillis> GRANDFATHER_SPRUCE_WILLIS = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(SpruceWillisTheXmasTree.MOD_ID,
+                    "grandfather_spruce_willis_the_xmas_tree"),
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, EntityGrandfatherWillis::new)
+                    .fireImmune()
+                    .dimensions(EntityDimensions.fixed(2.0F, 7.0F))
+                    .trackRangeChunks(1)
+                    .forceTrackedVelocityUpdates(true)
+                    .trackRangeChunks(80)
+                    .build());
+
+    public static final Item WILLIS_SPAWN_EGG = new SpawnEggItem(SPRUCE_WILLIS_THE_XMAS_TREE,
+            0x00FF00, 0xFF0000, new FabricItemSettings());
+
+    @Override
+    public void onInitialize() {
+        FabricDefaultAttributeRegistry.register(SPRUCE_WILLIS_THE_XMAS_TREE,
+                EntitySpruceWillis.spruceWillisAttributes());
+        FabricDefaultAttributeRegistry.register(GRANDFATHER_SPRUCE_WILLIS,
+                EntityGrandfatherWillis.grandfatherWillisAttributes());
+
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID,
+                "spruce_willis_the_xmas_tree_spawn_egg"), WILLIS_SPAWN_EGG);
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(content -> content.add(WILLIS_SPAWN_EGG));
+
+        BiomeModifications.addSpawn(biome -> biome.getBiomeRegistryEntry().isIn(BiomeTags.IS_OVERWORLD),
+                SpawnGroup.CREATURE, SPRUCE_WILLIS_THE_XMAS_TREE,
+                15, 1, 2);
     }
 }
