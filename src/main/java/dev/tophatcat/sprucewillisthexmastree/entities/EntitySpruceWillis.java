@@ -51,7 +51,7 @@ public class EntitySpruceWillis extends PathAwareEntity {
         goalSelector.add(2, new FleeEntityGoal<>(this, PlayerEntity.class,
                 6.0F, 1.0D, 1.5D));
         goalSelector.add(2, new FollowMobGoal(new EntityGrandfatherWillis(
-                SpruceWillisTheXmasTree.GRANDFATHER_SPRUCE_WILLIS, world), 1.0F, 0.5F, 1.5F));
+                SpruceWillisTheXmasTree.GRANDFATHER_SPRUCE_WILLIS, getWorld()), 1.0F, 0.5F, 1.5F));
         goalSelector.add(3, new WanderAroundFarGoal(this, 1.0D));
         goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         goalSelector.add(5, new LookAroundGoal(this));
@@ -69,16 +69,16 @@ public class EntitySpruceWillis extends PathAwareEntity {
     protected ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack heldItem = player.getStackInHand(hand);
         if (heldItem.getItem() == Items.BONE_MEAL) {
-            world.playSound(player, getX(), getY(), getZ(), SoundEvents.BLOCK_BELL_RESONATE, getSoundCategory(),
+            getWorld().playSound(player, getX(), getY(), getZ(), SoundEvents.BLOCK_BELL_RESONATE, getSoundCategory(),
                     1.0F, random.nextFloat() * 0.4F + 0.8F);
-            if (!world.isClient) {
+            if (!getWorld().isClient) {
                 convertTo(SpruceWillisTheXmasTree.GRANDFATHER_SPRUCE_WILLIS, false);
                 if (!player.getAbilities().creativeMode) {
                     heldItem.decrement(1);
                 }
             }
 
-            return ActionResult.success(world.isClient);
+            return ActionResult.success(getWorld().isClient);
         } else {
             return super.interactMob(player, hand);
         }
