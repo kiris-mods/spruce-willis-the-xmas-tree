@@ -1,5 +1,5 @@
 /*
- * Spruce Willis the Xmas Tree - https://github.com/tophatcats-mods/spruce-willis-the-xmas-tree
+ * Spruce Willis the Xmas Tree - https://github.com/kiris-mods/spruce-willis-the-xmas-tree
  * Copyright (C) 2013-2023 <KiriCattus>
  *
  * This library is free software; you can redistribute it and/or
@@ -20,32 +20,34 @@
  */
 package dev.tophatcat.sprucewillisthexmastree.client.rendering;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import dev.tophatcat.sprucewillisthexmastree.SpruceWillisTheXmasTree;
-import dev.tophatcat.sprucewillisthexmastree.client.SpruceClientInit;
 import dev.tophatcat.sprucewillisthexmastree.client.models.ModelGrandfatherWillis;
 import dev.tophatcat.sprucewillisthexmastree.entities.EntityGrandfatherWillis;
-import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
-public class RenderGrandfatherWillis extends MobEntityRenderer<EntityGrandfatherWillis,
+public class RenderGrandfatherWillis extends MobRenderer<EntityGrandfatherWillis,
         ModelGrandfatherWillis<EntityGrandfatherWillis>> {
 
-    public RenderGrandfatherWillis(EntityRendererFactory.Context context) {
+    private static final ResourceLocation RESOURCE_LOCATION = new ResourceLocation(SpruceWillisTheXmasTree.MOD_ID,
+        "textures/entity/spruce_willis_the_xmas_tree.png");
+
+    public RenderGrandfatherWillis(EntityRendererProvider.Context context) {
         super(context, new ModelGrandfatherWillis<>(
-                context.getPart(SpruceClientInit.LAYER_LOCATION)), 0.8F);
+                context.bakeLayer(ModelGrandfatherWillis.LAYER_LOCATION)), 0.8F);
     }
 
-    protected void scale(@NotNull EntityGrandfatherWillis entity, @NotNull MatrixStack matrixStack,
+    protected void scale(@NotNull EntityGrandfatherWillis entity, @NotNull PoseStack matrixStack,
                          float partialTickTime) {
         matrixStack.scale(2.5F, 2.5F, 2.5F);
     }
 
     @NotNull
     @Override
-    public Identifier getTexture(@NotNull final EntityGrandfatherWillis entity) {
-        return new Identifier(SpruceWillisTheXmasTree.MOD_ID, "textures/entity/spruce_willis_the_xmas_tree.png");
+    public ResourceLocation getTextureLocation(@NotNull final EntityGrandfatherWillis entity) {
+        return RESOURCE_LOCATION;
     }
 }

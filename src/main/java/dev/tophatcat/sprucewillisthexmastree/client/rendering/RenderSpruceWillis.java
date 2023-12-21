@@ -1,5 +1,5 @@
 /*
- * Spruce Willis the Xmas Tree - https://github.com/tophatcats-mods/spruce-willis-the-xmas-tree
+ * Spruce Willis the Xmas Tree - https://github.com/kiris-mods/spruce-willis-the-xmas-tree
  * Copyright (C) 2013-2023 <KiriCattus>
  *
  * This library is free software; you can redistribute it and/or
@@ -21,24 +21,26 @@
 package dev.tophatcat.sprucewillisthexmastree.client.rendering;
 
 import dev.tophatcat.sprucewillisthexmastree.SpruceWillisTheXmasTree;
-import dev.tophatcat.sprucewillisthexmastree.client.SpruceClientInit;
 import dev.tophatcat.sprucewillisthexmastree.client.models.ModelSpruceWillis;
 import dev.tophatcat.sprucewillisthexmastree.entities.EntitySpruceWillis;
-import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
-public class RenderSpruceWillis extends MobEntityRenderer<EntitySpruceWillis, ModelSpruceWillis<EntitySpruceWillis>> {
+public class RenderSpruceWillis extends MobRenderer<EntitySpruceWillis, ModelSpruceWillis<EntitySpruceWillis>> {
 
-    public RenderSpruceWillis(EntityRendererFactory.Context context) {
+    private static final ResourceLocation RESOURCE_LOCATION = new ResourceLocation(SpruceWillisTheXmasTree.MOD_ID,
+        "textures/entity/spruce_willis_the_xmas_tree.png");
+
+    public RenderSpruceWillis(EntityRendererProvider.Context context) {
         super(context, new ModelSpruceWillis<>(
-                context.getPart(SpruceClientInit.LAYER_LOCATION)), 0.8F);
+                context.bakeLayer(ModelSpruceWillis.LAYER_LOCATION)), 0.8F);
     }
 
     @NotNull
     @Override
-    public Identifier getTexture(@NotNull final EntitySpruceWillis entity) {
-        return new Identifier(SpruceWillisTheXmasTree.MOD_ID, "textures/entity/spruce_willis_the_xmas_tree.png");
+    public ResourceLocation getTextureLocation(@NotNull final EntitySpruceWillis entity) {
+        return RESOURCE_LOCATION;
     }
 }

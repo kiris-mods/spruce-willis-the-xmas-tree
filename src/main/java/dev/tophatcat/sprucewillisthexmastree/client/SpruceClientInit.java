@@ -1,5 +1,5 @@
 /*
- * Spruce Willis the Xmas Tree - https://github.com/tophatcats-mods/spruce-willis-the-xmas-tree
+ * Spruce Willis the Xmas Tree - https://github.com/kiris-mods/spruce-willis-the-xmas-tree
  * Copyright (C) 2013-2023 <KiriCattus>
  *
  * This library is free software; you can redistribute it and/or
@@ -21,27 +21,25 @@
 package dev.tophatcat.sprucewillisthexmastree.client;
 
 import dev.tophatcat.sprucewillisthexmastree.SpruceWillisTheXmasTree;
+import dev.tophatcat.sprucewillisthexmastree.client.models.ModelGrandfatherWillis;
 import dev.tophatcat.sprucewillisthexmastree.client.models.ModelSpruceWillis;
 import dev.tophatcat.sprucewillisthexmastree.client.rendering.RenderGrandfatherWillis;
 import dev.tophatcat.sprucewillisthexmastree.client.rendering.RenderSpruceWillis;
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.util.Identifier;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 
-public class SpruceClientInit implements ClientModInitializer {
+public class SpruceClientInit {
 
-    public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(
-            new Identifier(SpruceWillisTheXmasTree.MOD_ID, "spruce_willis_the_xmas_tree"),
-            "main");
+    public static void registerEntityModels(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(SpruceWillisTheXmasTree.SPRUCE_WILLIS_THE_XMAS_TREE.get(),
+            RenderSpruceWillis::new);
+        event.registerEntityRenderer(SpruceWillisTheXmasTree.GRANDFATHER_SPRUCE_WILLIS.get(),
+            RenderGrandfatherWillis::new);
+    }
 
-    @Override
-    public void onInitializeClient() {
-        EntityRendererRegistry.register(SpruceWillisTheXmasTree.SPRUCE_WILLIS_THE_XMAS_TREE,
-                RenderSpruceWillis::new);
-        EntityModelLayerRegistry.registerModelLayer(LAYER_LOCATION, ModelSpruceWillis::getTextureModelData);
-        EntityRendererRegistry.register(SpruceWillisTheXmasTree.GRANDFATHER_SPRUCE_WILLIS,
-                RenderGrandfatherWillis::new);
+    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(ModelSpruceWillis.LAYER_LOCATION,
+            ModelSpruceWillis::createBodyLayer);
+        event.registerLayerDefinition(ModelGrandfatherWillis.LAYER_LOCATION,
+            ModelGrandfatherWillis::createBodyLayer);
     }
 }
