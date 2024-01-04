@@ -28,4 +28,3 @@ gradlew         text    eol=lf
 *.png           binary
 *.so            binary
 *.war           binary
-

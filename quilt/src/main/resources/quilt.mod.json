@@ -1,0 +1,53 @@
+{
+	"schema_version": 1,
+	"quilt_loader": {
+		"group": "${mod_group}",
+		"id": "sprucewillisthexmastree",
+		"version": "${version}",
+		"metadata": {
+			"name": "${mod_name}",
+			"description": "${description}",
+			"contributors": {
+				"KiriCattus": "Owner/Author"
+			},
+			"contact": {
+				"homepage": "${display_url}",
+				"issues": "${mod_source}/issues",
+				"sources": "${mod_source}"
+			},
+			"icon": "logo.png",
+			"license": {
+				"name": "Lesser General Public License v2.1",
+				"id": "${license}",
+				"url": "${mod_source}/blob/dev/LICENSE.md"
+			}
+		},
+		"intermediate_mappings": "net.fabricmc:intermediary",
+		"entrypoints": {
+			"init": "dev.tophatcat.sprucewillisthexmastree.WillisQuilt",
+			"client_init": "dev.tophatcat.sprucewillisthexmastree.client.WillisRenderingQuilt"
+		},
+		"depends": [
+			{
+				"id": "quilt_loader",
+				"versions": ">=${quilt_loader_version}"
+			},
+			{
+				"id": "quilted_fabric_api",
+				"version": ">=${quilted_fabric_api_version}"
+			},
+			{
+				"id": "minecraft",
+				"versions": "1.20.1"
+			}
+		]
+	},
+	"modmenu": {
+		"links": {
+			"modmenu.discord": "${discord}",
+			"modmenu.modrinth": "${modrinth_url}",
+			"modmenu.curseforge": "${curseforge_url}"
+		},
+		"update_checker": true
+	}
+}

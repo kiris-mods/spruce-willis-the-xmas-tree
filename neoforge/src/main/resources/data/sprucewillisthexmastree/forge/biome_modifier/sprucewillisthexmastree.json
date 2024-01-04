@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#is_forest",
+  "spawners": [
+    {
+      "type": "sprucewillisthexmastree:spruce_willis_the_xmas_tree",
+      "weight": 10,
+      "minCount": 1,
+      "maxCount": 3
+    }
+  ]
+}

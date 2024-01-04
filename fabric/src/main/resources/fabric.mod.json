@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "sprucewillisthexmastree",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "${description}",
+  "authors": [
+    "${mod_author}"
+  ],
+  "contact": {
+    "homepage": "${display_url}",
+    "sources": "${mod_source}",
+    "issues": "${mod_source}/issues"
+  },
+  "license": "${license}",
+  "icon": "logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.tophatcat.sprucewillisthexmastree.WillisFabric"
+    ],
+    "client": [
+      "dev.tophatcat.sprucewillisthexmastree.client.WillisRenderingFabric"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}",
+    "java": ">=17"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "${discord}",
+        "modmenu.modrinth": "${modrinth_url}",
+        "modmenu.curseforge": "${curseforge_url}"
+      },
+      "update_checker": true
+    }
+  }
+}
