@@ -1,14 +1,16 @@
 ### 1.20.1:
+- 6.0.1  
+  Fix a crash where the mobs model isn't loaded on Fabric startup.
 - 6.0.0  
-Port to 1.20.1
+  Port to 1.20.1
 
 ### 1.20:
 - 6.0.0  
-Port to 1.20
+  Port to 1.20
 
 ### 1.19.4:
 - 6.0.0  
-Port to Fabric 1.19.4
+  Port to Fabric 1.19.4
 
 ### 1.19.3:
 - 6.0.0  
