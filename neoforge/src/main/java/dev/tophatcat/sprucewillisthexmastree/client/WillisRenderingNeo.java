@@ -4,7 +4,7 @@ import dev.tophatcat.sprucewillisthexmastree.WillisCommon;
 import dev.tophatcat.sprucewillisthexmastree.client.models.SpruceWillisModel;
 import dev.tophatcat.sprucewillisthexmastree.client.rendering.GrandfatherWillisRenderer;
 import dev.tophatcat.sprucewillisthexmastree.client.rendering.SpruceWillisRenderer;
-import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 public class WillisRenderingNeo {
 

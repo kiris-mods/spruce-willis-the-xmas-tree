@@ -34,5 +34,6 @@ include("common")
 include("fabric")
 include("neoforge")
 include("forge")
-include("quilt")
+//TODO Enable this once Quilt finally get things ready...
+//include("quilt")
 

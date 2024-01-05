@@ -3,22 +3,22 @@ package dev.tophatcat.sprucewillisthexmastree;
 import dev.tophatcat.sprucewillisthexmastree.client.WillisRenderingNeo;
 import dev.tophatcat.sprucewillisthexmastree.entities.GrandfatherWillis;
 import dev.tophatcat.sprucewillisthexmastree.entities.SpruceWillis;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLEnvironment;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 @Mod(WillisCommon.MOD_ID)
 public class WillisNeo {
 
     private static final DeferredRegister<EntityType<?>> ENTITIES
-        = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, WillisCommon.MOD_ID);
+        = DeferredRegister.create(Registries.ENTITY_TYPE, WillisCommon.MOD_ID);
 
     public WillisNeo() {
         WillisCommon.init();

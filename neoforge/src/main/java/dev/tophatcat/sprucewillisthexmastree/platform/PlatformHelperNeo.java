@@ -2,8 +2,8 @@ package dev.tophatcat.sprucewillisthexmastree.platform;
 
 import dev.tophatcat.sprucewillisthexmastree.WillisCommon;
 import dev.tophatcat.sprucewillisthexmastree.platform.services.IPlatformHelper;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.loading.FMLLoader;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.loading.FMLLoader;
 
 public class PlatformHelperNeo implements IPlatformHelper {
 
