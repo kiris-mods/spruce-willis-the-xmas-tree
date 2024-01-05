@@ -9,7 +9,6 @@ import net.minecraft.world.entity.MobCategory;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -20,9 +19,8 @@ public class WillisNeo {
     private static final DeferredRegister<EntityType<?>> ENTITIES
         = DeferredRegister.create(Registries.ENTITY_TYPE, WillisCommon.MOD_ID);
 
-    public WillisNeo() {
+    public WillisNeo(IEventBus bus) {
         WillisCommon.init();
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         setUpMobs();
         ENTITIES.register(bus);
         bus.addListener(this::registerAttributes);
