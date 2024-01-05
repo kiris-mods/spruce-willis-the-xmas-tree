@@ -1,4 +1,9 @@
+### 1.20.2
+- 7.0.1 Fix a crash where the mobs model isn't loaded on Fabric startup.
+- 7.0.0 Update to 1.20.2
+
 ### 1.20.1:
+- 6.0.1 Fix a crash where the mobs model isn't loaded on Fabric startup.
 - 6.0.0  
 Port to 1.20.1
 
