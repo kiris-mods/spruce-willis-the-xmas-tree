@@ -18,6 +18,7 @@ public class SpruceWillisRenderer extends MobRenderer<SpruceWillis, SpruceWillis
     @NotNull
     @Override
     public ResourceLocation getTextureLocation(@NotNull SpruceWillis entity) {
-        return new ResourceLocation(WillisCommon.MOD_ID, "textures/entity/spruce_willis_the_xmas_tree.png");
+        return ResourceLocation.fromNamespaceAndPath(WillisCommon.MOD_ID,
+            "textures/entity/spruce_willis_the_xmas_tree.png");
     }
 }

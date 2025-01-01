@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 public class SpruceWillisModel<T extends SpruceWillis> extends EntityModel<T> {
 
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
-        new ResourceLocation(WillisCommon.MOD_ID, "spruce_willis_the_xmas_tree"), "main");
+        ResourceLocation.fromNamespaceAndPath(WillisCommon.MOD_ID, "spruce_willis_the_xmas_tree"), "main");
     private final ModelPart body;
     private final ModelPart legFrontLeft;
     private final ModelPart legFrontRight;
@@ -176,8 +176,8 @@ public class SpruceWillisModel<T extends SpruceWillis> extends EntityModel<T> {
     }
 
     @Override
-    public void renderToBuffer(@NotNull PoseStack matrixStack, @NotNull VertexConsumer buffer, int packedLight,
-                               int packedOverlay, float red, float green, float blue, float alpha) {
-        body.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(@NotNull PoseStack poseStack, @NotNull VertexConsumer buffer,
+                               int packedLight, int packedOverlay, int color) {
+        body.render(poseStack, buffer, packedLight, packedOverlay, color);
     }
 }

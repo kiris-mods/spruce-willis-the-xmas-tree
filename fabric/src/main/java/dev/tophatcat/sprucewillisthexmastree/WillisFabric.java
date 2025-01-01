@@ -28,7 +28,7 @@ public class WillisFabric implements ModInitializer {
 
     private void setUpMobs() {
         WillisCommon.SPRUCE_WILLIS = Suppliers.ofInstance(Registry.register(BuiltInRegistries.ENTITY_TYPE,
-            new ResourceLocation(WillisCommon.MOD_ID, "spruce_willis_the_xmas_tree"),
+            ResourceLocation.fromNamespaceAndPath(WillisCommon.MOD_ID, "spruce_willis_the_xmas_tree"),
             EntityType.Builder.of(SpruceWillis::new, MobCategory.CREATURE)
                 .sized(1.0F, 2.0F)
                 .clientTrackingRange(10)
@@ -36,7 +36,7 @@ public class WillisFabric implements ModInitializer {
                 .build(WillisCommon.MOD_ID + ":spruce_willis_the_xmas_tree")));
 
         WillisCommon.GRANDFATHER_WILLIS = Suppliers.ofInstance(Registry.register(BuiltInRegistries.ENTITY_TYPE,
-            new ResourceLocation(WillisCommon.MOD_ID, "grandfather_spruce_willis"),
+            ResourceLocation.fromNamespaceAndPath(WillisCommon.MOD_ID, "grandfather_spruce_willis"),
             EntityType.Builder.of(GrandfatherWillis::new, MobCategory.CREATURE)
                 .sized(2.0F, 6.0F)
                 .clientTrackingRange(10)

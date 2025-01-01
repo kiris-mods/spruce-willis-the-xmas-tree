@@ -1,5 +1,5 @@
 modLoader="javafml" #mandatory
-loaderVersion="${neoforge_loader_version_range}" #mandatory
+loaderVersion="${fancy_mod_loader_version_range}" #mandatory
 license="${license}" # Review your options at https://choosealicense.com/.
 issueTrackerURL="${mod_source}/issues" #optional
 [[mods]] #mandatory
@@ -9,7 +9,7 @@ displayName = "${mod_name}" #mandatory
 displayURL="${display_url}" #optional (displayed in the mod UI)
 logoFile="logo.png" #optional
 credits="${credits}" #optional
-authors = "${mod_author}" #optional
+authors = "${author}" #optional
 description = '''${description}''' #mandatory (Supports multiline text)
 [[dependencies.${mod_id}]] #optional
 modId = "neoforge" #mandatory

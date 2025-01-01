@@ -5,7 +5,7 @@
   "name": "${mod_name}",
   "description": "${description}",
   "authors": [
-    "${mod_author}"
+    "${author}"
   ],
   "contact": {
     "homepage": "${display_url}",
@@ -27,7 +27,7 @@
     "fabricloader": ">=${fabric_loader_version}",
     "fabric": "*",
     "minecraft": "${minecraft_version}",
-    "java": ">=17"
+    "java": ">=${java_version}"
   },
   "custom": {
     "modmenu": {

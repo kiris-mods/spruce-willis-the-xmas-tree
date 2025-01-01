@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 public class GrandfatherWillisRenderer extends MobRenderer<GrandfatherWillis,
     GrandfatherWillisModel<GrandfatherWillis>> {
 
-    private static final ResourceLocation RESOURCE_LOCATION = new ResourceLocation(WillisCommon.MOD_ID,
+    private static final ResourceLocation RESOURCE_LOCATION = ResourceLocation.fromNamespaceAndPath(WillisCommon.MOD_ID,
         "textures/entity/spruce_willis_the_xmas_tree.png");
 
     public GrandfatherWillisRenderer(EntityRendererProvider.Context context) {
