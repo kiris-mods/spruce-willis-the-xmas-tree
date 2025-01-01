@@ -37,6 +37,16 @@
         "modmenu.curseforge": "${curseforge_url}"
       },
       "update_checker": true
+    },
+    "mc-publish": {
+      "curseforge": "${curseforge_id}",
+      "modrinth": "${modrinth_id}",
+      "loaders": [
+        "fabric"
+      ],
+      "dependencies": [
+        "fabric-api(required){modrinth:P7dR8mSH}{curseforge:306612}"
+      ]
     }
   }
 }
