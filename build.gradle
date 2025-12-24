@@ -1,7 +1,5 @@
 plugins {
-	id "pmd"
-	id "net.neoforged.licenser" version "0.7.5" apply false
-	id "com.diffplug.spotless" version "6.25.0" apply false
-	id "fabric-loom" version "1.9-+" apply false
-	id "net.neoforged.moddev" version "2.0.61-beta" apply false
+    id "net.neoforged.licenser" version "${licenser_version}" apply false
+    id "fabric-loom" version "${fabric_loom}" apply false
+    id "net.neoforged.moddev" version "${moddev_version}" apply false
 }
