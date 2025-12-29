@@ -16,78 +16,84 @@
  */
 package dev.tophatcat.sprucewillisthexmastree.entities;
 
-import dev.tophatcat.sprucewillisthexmastree.WillisCommon;
+import dev.tophatcat.sprucewillisthexmastree.SpruceWillisCommon;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.AnimationState;
+import net.minecraft.world.entity.ConversionParams;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.FollowMobGoal;
+import net.minecraft.world.entity.ai.goal.GolemRandomStrollInVillageGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.MoveThroughVillageGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ambient.AmbientCreature;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.foreign.MemorySegment;
+
 public class SpruceWillis extends PathfinderMob {
 
-    public SpruceWillis(EntityType<? extends PathfinderMob> type, Level world) {
-        super(type, world);
+    public AnimationState idleAnimationState = new AnimationState();
+    public AnimationState walkingAnimationState = new AnimationState();
+
+    public SpruceWillis(EntityType<? extends PathfinderMob> entityType, Level level) {
+        super(entityType, level);
     }
 
     @Override
     protected void registerGoals() {
-        goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class,
+        goalSelector.addGoal(1, new MoveThroughVillageGoal(this, 1.0F,
+            false, 4, () -> false));
+        goalSelector.addGoal(2, new GolemRandomStrollInVillageGoal(this, 0.6));
+        goalSelector.addGoal(3, new AvoidEntityGoal<>(this, Player.class,
                 6.0F, 1.0D, 1.5D));
-        goalSelector.addGoal(2, new FollowMobGoal(new GrandfatherWillis(
-                WillisCommon.GRANDFATHER_WILLIS.get(), level()), 1.0F, 0.5F, 1.5F));
-        goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        goalSelector.addGoal(5, new RandomLookAroundGoal(this));
-        goalSelector.addGoal(6, new FloatGoal(this));
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return AmbientCreature.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 40.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.25D);
+        goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        goalSelector.addGoal(6, new RandomLookAroundGoal(this));
+        goalSelector.addGoal(7, new FloatGoal(this));
     }
 
     @NotNull
     @Override
-    protected InteractionResult mobInteract(Player player, InteractionHand hand) {
+    protected InteractionResult mobInteract(Player player, @NotNull InteractionHand hand) {
         ItemStack heldItem = player.getItemInHand(hand);
         if (heldItem.getItem() == Items.BONE_MEAL) {
             level().playSound(player, getX(), getY(), getZ(), SoundEvents.BELL_RESONATE, getSoundSource(),
                     1.0F, random.nextFloat() * 0.4F + 0.8F);
-            if (!level().isClientSide) {
-                convertTo(WillisCommon.GRANDFATHER_WILLIS.get(), false);
+            if (!level().isClientSide()) {
+                convertToGrandfatherWillis();
                 if (!player.getAbilities().instabuild) {
                     heldItem.shrink(1);
                 }
             }
 
-            return InteractionResult.sidedSuccess(level().isClientSide);
+            return InteractionResult.SUCCESS;
         } else {
             return super.mobInteract(player, hand);
         }
     }
 
     @Override
-    public void thunderHit(@NotNull ServerLevel world, @NotNull LightningBolt lightningBolt) {
-        convertTo(WillisCommon.GRANDFATHER_WILLIS.get(), false);
+    public void thunderHit(@NotNull ServerLevel level, @NotNull LightningBolt lightningBolt) {
+        convertToGrandfatherWillis();
+    }
+
+    private void convertToGrandfatherWillis() {
+        convertTo(SpruceWillisCommon.GRANDFATHER_WILLIS.get(),
+            ConversionParams.single(this, false, true),
+            grandfatherWillis -> {});
     }
 
     @Override

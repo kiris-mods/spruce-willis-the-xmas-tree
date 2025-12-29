@@ -19,9 +19,17 @@ package dev.tophatcat.sprucewillisthexmastree;
 import dev.tophatcat.sprucewillisthexmastree.client.WillisRenderingNeo;
 import dev.tophatcat.sprucewillisthexmastree.entities.GrandfatherWillis;
 import dev.tophatcat.sprucewillisthexmastree.entities.SpruceWillis;
+import dev.tophatcat.sprucewillisthexmastree.platform.PlatformHelperNeo;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -29,41 +37,59 @@ import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-@Mod(WillisCommon.MOD_ID)
+@Mod(SpruceWillisCommon.MOD_ID)
 public class WillisNeo {
 
-    private static final DeferredRegister<EntityType<?>> ENTITIES
-        = DeferredRegister.create(Registries.ENTITY_TYPE, WillisCommon.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(
+        Registries.BLOCK_ENTITY_TYPE, SpruceWillisCommon.MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(
+        Registries.BLOCK, SpruceWillisCommon.MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(
+        Registries.ENTITY_TYPE, SpruceWillisCommon.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(
+        Registries.ITEM, SpruceWillisCommon.MOD_ID);
+    public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(
+        Registries.SOUND_EVENT, SpruceWillisCommon.MOD_ID);
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(
+        Registries.CREATIVE_MODE_TAB, SpruceWillisCommon.MOD_ID);
 
     public WillisNeo(IEventBus bus) {
-        WillisCommon.init();
-        setUpMobs();
+        SpruceWillisCommon.init();
+        BLOCK_ENTITIES.register(bus);
+        BLOCKS.register(bus);
         ENTITIES.register(bus);
+        ITEMS.register(bus);
+        SOUND_EVENTS.register(bus);
+        CREATIVE_TABS.register(bus);
+
+        registerEntities();
         bus.addListener(this::registerAttributes);
-        if (FMLEnvironment.dist == Dist.CLIENT) {
+        if (FMLEnvironment.getDist() == Dist.CLIENT) {
             bus.addListener(WillisRenderingNeo::registerRenderers);
             bus.addListener(WillisRenderingNeo::registerModelLayers);
         }
     }
 
-    private void setUpMobs() {
-        WillisCommon.SPRUCE_WILLIS = ENTITIES.register("spruce_willis_the_xmas_tree",
+    private void registerEntities() {
+        SpruceWillisCommon.SPRUCE_WILLIS = new PlatformHelperNeo().registerEntity("spruce_willis_the_xmas_tree",
             () -> EntityType.Builder.of(SpruceWillis::new, MobCategory.CREATURE)
                 .sized(1.0F, 2.0F)
                 .clientTrackingRange(10)
                 .fireImmune()
-                .build(WillisCommon.MOD_ID + ":spruce_willis_the_xmas_tree"));
+                .build(ResourceKey.create(Registries.ENTITY_TYPE,
+                    Identifier.fromNamespaceAndPath(SpruceWillisCommon.MOD_ID, "spruce_willis_the_xmas_tree"))));
 
-        WillisCommon.GRANDFATHER_WILLIS = ENTITIES.register("grandfather_spruce_willis",
+        SpruceWillisCommon.GRANDFATHER_WILLIS = new PlatformHelperNeo().registerEntity("grandfather_spruce_willis",
             () -> EntityType.Builder.of(GrandfatherWillis::new, MobCategory.CREATURE)
                 .sized(2.0F, 6.0F)
                 .clientTrackingRange(10)
                 .fireImmune()
-                .build(WillisCommon.MOD_ID + ":grandfather_spruce_willis"));
+                .build(ResourceKey.create(Registries.ENTITY_TYPE,
+                    Identifier.fromNamespaceAndPath(SpruceWillisCommon.MOD_ID, "grandfather_spruce_willis"))));
     }
 
     private void registerAttributes(final EntityAttributeCreationEvent event) {
-        event.put(WillisCommon.SPRUCE_WILLIS.get(), SpruceWillis.createAttributes().build());
-        event.put(WillisCommon.GRANDFATHER_WILLIS.get(), GrandfatherWillis.createAttributes().build());
+        event.put(SpruceWillisCommon.SPRUCE_WILLIS.get(), SpruceWillisCommon.createWillisAttributes().build());
+        event.put(SpruceWillisCommon.GRANDFATHER_WILLIS.get(), SpruceWillisCommon.createGrandfatherWillisAttributes().build());
     }
 }

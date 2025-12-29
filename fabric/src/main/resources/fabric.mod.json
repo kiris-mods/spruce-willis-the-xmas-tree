@@ -17,17 +17,16 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "dev.tophatcat.sprucewillisthexmastree.WillisFabric"
+      "dev.tophatcat.sprucewillisthexmastree.SpruceWillisFabric"
     ],
     "client": [
-      "dev.tophatcat.sprucewillisthexmastree.client.WillisRenderingFabric"
+      "dev.tophatcat.sprucewillisthexmastree.client.SpruceWillisFabricClient"
     ]
   },
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
     "fabric": "*",
     "minecraft": "${minecraft_version}",
-    "geckolib": ">=${geckolib_fabric_version}",
     "java": ">=${java_version}"
   },
   "custom": {
@@ -46,8 +45,7 @@
         "fabric"
       ],
       "dependencies": [
-        "fabric-api(required){modrinth:P7dR8mSH}{curseforge:306612}",
-        "geckolib(required){modrinth:8BmcQJ2H}{curseforge:388172}"
+        "fabric-api(required){modrinth:P7dR8mSH}{curseforge:306612}"
       ]
     }
   }

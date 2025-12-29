@@ -18,24 +18,41 @@ package dev.tophatcat.sprucewillisthexmastree;
 
 import dev.tophatcat.sprucewillisthexmastree.entities.GrandfatherWillis;
 import dev.tophatcat.sprucewillisthexmastree.entities.SpruceWillis;
-import dev.tophatcat.sprucewillisthexmastree.platform.Services;
+import dev.tophatcat.sprucewillisthexmastree.platform.IPlatform;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ambient.AmbientCreature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ServiceLoader;
 import java.util.function.Supplier;
 
-public class WillisCommon {
+public class SpruceWillisCommon {
 
     public static final String MOD_ID = "sprucewillisthexmastree";
     public static final String MOD_NAME = "Spruce Willis the Xmas Tree";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
+    public static final IPlatform COMMON_PLATFORM = ServiceLoader.load(IPlatform.class).findFirst().orElseThrow();
 
     public static Supplier<EntityType<SpruceWillis>> SPRUCE_WILLIS = null;
     public static Supplier<EntityType<GrandfatherWillis>> GRANDFATHER_WILLIS = null;
 
     public static void init() {
         LOG.debug("We are currently loaded via the {} mod loader in a {} environment!",
-            Services.PLATFORM.getPlatformName(), Services.PLATFORM.getEnvironmentName());
+            COMMON_PLATFORM.getPlatformName(), COMMON_PLATFORM.getEnvironmentName());
+    }
+
+    public static AttributeSupplier.Builder createWillisAttributes() {
+        return AmbientCreature.createMobAttributes()
+            .add(Attributes.MAX_HEALTH, 40.0D)
+            .add(Attributes.MOVEMENT_SPEED, 0.25D);
+    }
+
+    public static AttributeSupplier.Builder createGrandfatherWillisAttributes() {
+        return AmbientCreature.createMobAttributes()
+            .add(Attributes.MAX_HEALTH, 75.0D)
+            .add(Attributes.MOVEMENT_SPEED, 0.20D);
     }
 }

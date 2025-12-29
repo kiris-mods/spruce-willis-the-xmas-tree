@@ -16,7 +16,7 @@
  */
 package dev.tophatcat.sprucewillisthexmastree.platform;
 
-import dev.tophatcat.sprucewillisthexmastree.WillisCommon;
+import dev.tophatcat.sprucewillisthexmastree.SpruceWillisCommon;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Holder;
@@ -45,7 +45,7 @@ public class PlatformFabric implements IPlatform {
 
     @Override
     public boolean isModLoaded(String modId) {
-        return FabricLoader.getInstance().isModLoaded(WillisCommon.MOD_ID);
+        return FabricLoader.getInstance().isModLoaded(SpruceWillisCommon.MOD_ID);
     }
 
     @Override
@@ -99,7 +99,7 @@ public class PlatformFabric implements IPlatform {
     private static <T, R extends Registry<? super T>> Supplier<T> registerSupplier(
         R registry, String id, Supplier<T> object) {
         final T registeredObject = Registry.register((Registry<T>) registry, Identifier.fromNamespaceAndPath(
-            WillisCommon.MOD_ID, id), object.get());
+            SpruceWillisCommon.MOD_ID, id), object.get());
         return () -> registeredObject;
     }
 
@@ -107,6 +107,6 @@ public class PlatformFabric implements IPlatform {
     private static <T, R extends Registry<? super T>> Holder<T> registerHolder(
         R registry, String id, Supplier<T> object) {
         return Registry.registerForHolder((Registry<T>) registry, Identifier.fromNamespaceAndPath(
-            WillisCommon.MOD_ID, id), object.get());
+            SpruceWillisCommon.MOD_ID, id), object.get());
         }
 }

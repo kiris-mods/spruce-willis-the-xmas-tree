@@ -16,25 +16,42 @@
  */
 package dev.tophatcat.sprucewillisthexmastree.client.rendering;
 
-import dev.tophatcat.sprucewillisthexmastree.WillisCommon;
+import dev.tophatcat.sprucewillisthexmastree.SpruceWillisCommon;
 import dev.tophatcat.sprucewillisthexmastree.client.models.SpruceWillisModel;
 import dev.tophatcat.sprucewillisthexmastree.entities.SpruceWillis;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
-public class SpruceWillisRenderer extends MobRenderer<SpruceWillis, SpruceWillisModel<SpruceWillis>> {
+public class SpruceWillisRenderer extends MobRenderer<SpruceWillis, WillisRenderState, SpruceWillisModel> {
+
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
+        Identifier.fromNamespaceAndPath(SpruceWillisCommon.MOD_ID, "spruce_willis_the_xmas_tree"), "main");
+
+    private static final Identifier TEXTURE_LOCATION = Identifier.fromNamespaceAndPath(
+        SpruceWillisCommon.MOD_ID, "textures/entity/spruce_willis_the_xmas_tree.png");
 
     public SpruceWillisRenderer(EntityRendererProvider.Context context) {
-        super(context, new SpruceWillisModel<>(
-                context.bakeLayer(SpruceWillisModel.LAYER_LOCATION)), 0.8F);
+        super(context, new SpruceWillisModel(context.bakeLayer(LAYER_LOCATION)), 0.8F);
     }
 
     @NotNull
     @Override
-    public ResourceLocation getTextureLocation(@NotNull SpruceWillis entity) {
-        return ResourceLocation.fromNamespaceAndPath(WillisCommon.MOD_ID,
-            "textures/entity/spruce_willis_the_xmas_tree.png");
+    public Identifier getTextureLocation(WillisRenderState renderState) {
+        return TEXTURE_LOCATION;
+    }
+
+    @Override
+    public WillisRenderState createRenderState() {
+        return new WillisRenderState();
+    }
+
+    @Override
+    public void extractRenderState(SpruceWillis entity, WillisRenderState renderState, float partialTick) {
+        super.extractRenderState(entity, renderState, partialTick);
+        renderState.idleAnimationState.copyFrom(entity.idleAnimationState);
+        renderState.walkingAnimationState.copyFrom(entity.walkingAnimationState);
     }
 }

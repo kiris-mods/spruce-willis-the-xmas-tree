@@ -25,13 +25,6 @@ versionRange = "[${minecraft_version},)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.${mod_id}]]
-modId = "geckolib"
-required = true
-versionRange = "[${geckolib_neoforge_version},)"
-ordering = "NONE"
-side = "BOTH"
-
 [mc-publish]
 curseforge = "curseforge_id"
 modrinth = "modrinth_id"

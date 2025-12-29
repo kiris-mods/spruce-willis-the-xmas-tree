@@ -16,7 +16,7 @@
  */
 package dev.tophatcat.sprucewillisthexmastree.platform;
 
-import dev.tophatcat.sprucewillisthexmastree.WillisCommon;
+import dev.tophatcat.sprucewillisthexmastree.SpruceWillisCommon;
 import dev.tophatcat.sprucewillisthexmastree.WillisNeo;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
@@ -42,7 +42,7 @@ public class PlatformHelperNeo implements IPlatform {
 
     @Override
     public boolean isModLoaded(String modId) {
-        return ModList.get().isLoaded(WillisCommon.MOD_ID);
+        return ModList.get().isLoaded(SpruceWillisCommon.MOD_ID);
     }
 
     @Override

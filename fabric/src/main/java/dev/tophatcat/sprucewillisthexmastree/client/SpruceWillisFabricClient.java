@@ -16,21 +16,25 @@
  */
 package dev.tophatcat.sprucewillisthexmastree.client;
 
-import dev.tophatcat.sprucewillisthexmastree.WillisCommon;
+import dev.tophatcat.sprucewillisthexmastree.SpruceWillisCommon;
+import dev.tophatcat.sprucewillisthexmastree.client.models.GrandfatherWillisModel;
 import dev.tophatcat.sprucewillisthexmastree.client.models.SpruceWillisModel;
 import dev.tophatcat.sprucewillisthexmastree.client.rendering.GrandfatherWillisRenderer;
 import dev.tophatcat.sprucewillisthexmastree.client.rendering.SpruceWillisRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 
-public class WillisRenderingFabric implements ClientModInitializer {
+public class SpruceWillisFabricClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        EntityRendererRegistry.register(WillisCommon.SPRUCE_WILLIS.get(), SpruceWillisRenderer::new);
-        EntityModelLayerRegistry.registerModelLayer(SpruceWillisModel.LAYER_LOCATION,
+        EntityRenderers.register(SpruceWillisCommon.SPRUCE_WILLIS.get(), SpruceWillisRenderer::new);
+        EntityRenderers.register(SpruceWillisCommon.GRANDFATHER_WILLIS.get(), GrandfatherWillisRenderer::new);
+
+        EntityModelLayerRegistry.registerModelLayer(SpruceWillisRenderer.LAYER_LOCATION,
             SpruceWillisModel::createBodyLayer);
-        EntityRendererRegistry.register(WillisCommon.GRANDFATHER_WILLIS.get(), GrandfatherWillisRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(GrandfatherWillisRenderer.LAYER_LOCATION,
+            GrandfatherWillisModel::createBodyLayer);
     }
 }

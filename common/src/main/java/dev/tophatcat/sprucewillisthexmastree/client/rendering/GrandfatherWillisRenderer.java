@@ -16,34 +16,45 @@
  */
 package dev.tophatcat.sprucewillisthexmastree.client.rendering;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import dev.tophatcat.sprucewillisthexmastree.WillisCommon;
+import dev.tophatcat.sprucewillisthexmastree.SpruceWillisCommon;
 import dev.tophatcat.sprucewillisthexmastree.client.models.GrandfatherWillisModel;
 import dev.tophatcat.sprucewillisthexmastree.entities.GrandfatherWillis;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
-public class GrandfatherWillisRenderer extends MobRenderer<GrandfatherWillis,
-    GrandfatherWillisModel<GrandfatherWillis>> {
+public class GrandfatherWillisRenderer extends MobRenderer<GrandfatherWillis, WillisRenderState,
+    GrandfatherWillisModel> {
 
-    private static final ResourceLocation RESOURCE_LOCATION = ResourceLocation.fromNamespaceAndPath(WillisCommon.MOD_ID,
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
+        Identifier.fromNamespaceAndPath(SpruceWillisCommon.MOD_ID, "spruce_willis_the_xmas_tree"), "main");
+
+    private static final Identifier TEXTURE_LOCATION = Identifier.fromNamespaceAndPath(SpruceWillisCommon.MOD_ID,
         "textures/entity/spruce_willis_the_xmas_tree.png");
 
     public GrandfatherWillisRenderer(EntityRendererProvider.Context context) {
-        super(context, new GrandfatherWillisModel<>(
-                context.bakeLayer(GrandfatherWillisModel.LAYER_LOCATION)), 0.8F);
-    }
-
-    protected void scale(@NotNull GrandfatherWillis entity, @NotNull PoseStack matrixStack,
-                         float partialTickTime) {
-        matrixStack.scale(2.5F, 2.5F, 2.5F);
+        super(context, new GrandfatherWillisModel(
+                context.bakeLayer(LAYER_LOCATION)), 0.8F);
     }
 
     @NotNull
     @Override
-    public ResourceLocation getTextureLocation(@NotNull final GrandfatherWillis entity) {
-        return RESOURCE_LOCATION;
+    public Identifier getTextureLocation(WillisRenderState renderState) {
+        return TEXTURE_LOCATION;
+    }
+
+    @Override
+    public WillisRenderState createRenderState() {
+        return new WillisRenderState();
+    }
+
+    @Override
+    public void extractRenderState(GrandfatherWillis entity, WillisRenderState renderState, float partialTick) {
+        super.extractRenderState(entity, renderState, partialTick);
+        renderState.idleAnimationState.copyFrom(entity.idleAnimationState);
+        renderState.walkingAnimationState.copyFrom(entity.walkingAnimationState);
+        renderState.scale = 2.5F;
     }
 }

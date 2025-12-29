@@ -19,21 +19,23 @@ package dev.tophatcat.sprucewillisthexmastree.entities;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.GolemRandomStrollInVillageGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MoveThroughVillageGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ambient.AmbientCreature;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 public class GrandfatherWillis extends PathfinderMob {
+
+    public AnimationState idleAnimationState = new AnimationState();
+    public AnimationState walkingAnimationState = new AnimationState();
 
     public GrandfatherWillis(EntityType<? extends PathfinderMob> type, Level level) {
         super(type, level);
@@ -42,21 +44,12 @@ public class GrandfatherWillis extends PathfinderMob {
     @Override
     protected void registerGoals() {
         goalSelector.addGoal(1, new MoveThroughVillageGoal(this, 1.0F,
-                false, 4, this::canBreakDoors));
+                false, 4, () -> false));
+        goalSelector.addGoal(2, new GolemRandomStrollInVillageGoal(this, 0.6));
         goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
         goalSelector.addGoal(5, new RandomLookAroundGoal(this));
         goalSelector.addGoal(6, new FloatGoal(this));
-    }
-
-    private boolean canBreakDoors() {
-        return false;
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return AmbientCreature.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 75.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.20D);
     }
 
     @Override
