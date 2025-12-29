@@ -41,8 +41,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.foreign.MemorySegment;
-
 public class SpruceWillis extends PathfinderMob {
 
     public AnimationState idleAnimationState = new AnimationState();
