@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "sprucewillisthexmastree",
+  "id": "${mod_id}",
   "version": "${version}",
   "name": "${mod_name}",
   "description": "${description}",
@@ -27,6 +27,7 @@
     "fabricloader": ">=${fabric_loader_version}",
     "fabric": "*",
     "minecraft": "${minecraft_version}",
+    "geckolib": ">=${geckolib_fabric_version}",
     "java": ">=${java_version}"
   },
   "custom": {
@@ -45,7 +46,8 @@
         "fabric"
       ],
       "dependencies": [
-        "fabric-api(required){modrinth:P7dR8mSH}{curseforge:306612}"
+        "fabric-api(required){modrinth:P7dR8mSH}{curseforge:306612}",
+        "geckolib(required){modrinth:8BmcQJ2H}{curseforge:388172}"
       ]
     }
   }
