@@ -17,7 +17,6 @@
 package dev.tophatcat.sprucewillisthexmastree.client;
 
 import dev.tophatcat.sprucewillisthexmastree.SpruceWillisCommon;
-import dev.tophatcat.sprucewillisthexmastree.client.models.GrandfatherWillisModel;
 import dev.tophatcat.sprucewillisthexmastree.client.models.SpruceWillisModel;
 import dev.tophatcat.sprucewillisthexmastree.client.rendering.GrandfatherWillisRenderer;
 import dev.tophatcat.sprucewillisthexmastree.client.rendering.SpruceWillisRenderer;
@@ -34,7 +33,5 @@ public class SpruceWillisFabricClient implements ClientModInitializer {
 
         EntityModelLayerRegistry.registerModelLayer(SpruceWillisRenderer.LAYER_LOCATION,
             SpruceWillisModel::createBodyLayer);
-        EntityModelLayerRegistry.registerModelLayer(GrandfatherWillisRenderer.LAYER_LOCATION,
-            GrandfatherWillisModel::createBodyLayer);
     }
 }

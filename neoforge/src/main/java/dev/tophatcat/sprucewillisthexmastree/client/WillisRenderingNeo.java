@@ -31,6 +31,5 @@ public class WillisRenderingNeo {
 
     public static void registerModelLayers(final EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(SpruceWillisRenderer.LAYER_LOCATION, SpruceWillisModel::createBodyLayer);
-        event.registerLayerDefinition(GrandfatherWillisRenderer.LAYER_LOCATION, SpruceWillisModel::createBodyLayer);
     }
 }

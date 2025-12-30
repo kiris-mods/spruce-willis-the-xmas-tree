@@ -43,10 +43,10 @@ public class GrandfatherWillis extends PathfinderMob {
 
     @Override
     protected void registerGoals() {
-        goalSelector.addGoal(1, new MoveThroughVillageGoal(this, 1.0F,
+        goalSelector.addGoal(1, new MoveThroughVillageGoal(this, 1F,
                 false, 4, () -> false));
-        goalSelector.addGoal(2, new GolemRandomStrollInVillageGoal(this, 0.6));
-        goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        goalSelector.addGoal(2, new GolemRandomStrollInVillageGoal(this, 1F));
+        goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1D));
         goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
         goalSelector.addGoal(5, new RandomLookAroundGoal(this));
         goalSelector.addGoal(6, new FloatGoal(this));

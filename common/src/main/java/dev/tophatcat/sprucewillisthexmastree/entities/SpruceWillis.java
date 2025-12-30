@@ -52,12 +52,12 @@ public class SpruceWillis extends PathfinderMob {
 
     @Override
     protected void registerGoals() {
-        goalSelector.addGoal(1, new MoveThroughVillageGoal(this, 1.0F,
+        goalSelector.addGoal(1, new MoveThroughVillageGoal(this, 1F,
             false, 4, () -> false));
-        goalSelector.addGoal(2, new GolemRandomStrollInVillageGoal(this, 0.6));
+        goalSelector.addGoal(2, new GolemRandomStrollInVillageGoal(this, 1F));
         goalSelector.addGoal(3, new AvoidEntityGoal<>(this, Player.class,
                 6.0F, 1.0D, 1.5D));
-        goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1D));
         goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 8.0F));
         goalSelector.addGoal(6, new RandomLookAroundGoal(this));
         goalSelector.addGoal(7, new FloatGoal(this));

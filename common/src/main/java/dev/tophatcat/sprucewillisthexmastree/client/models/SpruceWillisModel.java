@@ -182,5 +182,7 @@ public class SpruceWillisModel extends EntityModel<WillisRenderState> {
     @Override
     public void setupAnim(WillisRenderState renderState) {
         super.setupAnim(renderState);
+        idleAnimation.apply(renderState.idleAnimationState, renderState.ageInTicks);
+        walkingAnimation.applyWalk(renderState.walkAnimationPos, renderState.walkAnimationSpeed, 3.5F, 3.5F);
     }
 }
