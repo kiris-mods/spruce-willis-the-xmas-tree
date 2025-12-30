@@ -79,13 +79,13 @@ public class WillisNeo {
                 .build(ResourceKey.create(Registries.ENTITY_TYPE,
                     Identifier.fromNamespaceAndPath(SpruceWillisCommon.MOD_ID, "spruce_willis_the_xmas_tree"))));
 
-        SpruceWillisCommon.GRANDFATHER_WILLIS = new PlatformHelperNeo().registerEntity("grandfather_spruce_willis",
+        SpruceWillisCommon.GRANDFATHER_WILLIS = new PlatformHelperNeo().registerEntity("grandfather_willis_the_xmas_tree",
             () -> EntityType.Builder.of(GrandfatherWillis::new, MobCategory.CREATURE)
                 .sized(2.0F, 6.0F)
                 .clientTrackingRange(10)
                 .fireImmune()
                 .build(ResourceKey.create(Registries.ENTITY_TYPE,
-                    Identifier.fromNamespaceAndPath(SpruceWillisCommon.MOD_ID, "grandfather_spruce_willis"))));
+                    Identifier.fromNamespaceAndPath(SpruceWillisCommon.MOD_ID, "grandfather_willis_the_xmas_tree"))));
     }
 
     private void registerAttributes(final EntityAttributeCreationEvent event) {

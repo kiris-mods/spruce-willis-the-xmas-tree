@@ -51,7 +51,7 @@ public class SpruceWillisFabric implements ModInitializer {
             .build(ResourceKey.create(Registries.ENTITY_TYPE,
                 Identifier.fromNamespaceAndPath(SpruceWillisCommon.MOD_ID, "spruce_willis_the_xmas_tree"))));
 
-        SpruceWillisCommon.GRANDFATHER_WILLIS = new PlatformFabric().registerEntity("grandfather_spruce_willis",
+        SpruceWillisCommon.GRANDFATHER_WILLIS = new PlatformFabric().registerEntity("grandfather_willis_the_xmas_tree",
             () -> EntityType.Builder.of(GrandfatherWillis::new, MobCategory.CREATURE)
                 .sized(2.0F, 6.0F)
                 .clientTrackingRange(10)
