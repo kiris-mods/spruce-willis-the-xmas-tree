@@ -63,6 +63,14 @@ public class SpruceWillis extends PathfinderMob {
         goalSelector.addGoal(7, new FloatGoal(this));
     }
 
+    @Override
+    public void tick() {
+        super.tick();
+        if(this.level().isClientSide()) {
+            idleAnimationState.startIfStopped(this.tickCount);
+        }
+    }
+
     @NotNull
     @Override
     protected InteractionResult mobInteract(Player player, @NotNull InteractionHand hand) {
