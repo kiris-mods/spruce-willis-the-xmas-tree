@@ -53,6 +53,14 @@ public class GrandfatherWillis extends PathfinderMob {
     }
 
     @Override
+    public void tick() {
+        super.tick();
+        if(this.level().isClientSide()) {
+            idleAnimationState.startIfStopped(this.tickCount);
+        }
+    }
+
+    @Override
     protected SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
         return SoundEvents.WOOD_HIT;
     }

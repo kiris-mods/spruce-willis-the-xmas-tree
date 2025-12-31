@@ -1,9 +1,12 @@
 ### 1.21.11
-- 11.0.0
-  Port to 1.21.11
+- 11.0.0  
+  Port to 1.21.11  
+  Redo rendering code and added fresh animations.  
+  Rewrite portions of the mods code and renamed the larger mob.  
+  Tweak mob goals a little bit to clean them up and hopefully make them work better.
 
 ### 1.21.1
-- 10.0.0
+- 10.0.0  
   Update to 1.21.1
 
 ### 1.20.4

@@ -17,6 +17,7 @@
 package dev.tophatcat.sprucewillisthexmastree.client.rendering;
 
 import dev.tophatcat.sprucewillisthexmastree.SpruceWillisCommon;
+import dev.tophatcat.sprucewillisthexmastree.client.WillisRenderState;
 import dev.tophatcat.sprucewillisthexmastree.client.models.GrandfatherWillisModel;
 import dev.tophatcat.sprucewillisthexmastree.entities.GrandfatherWillis;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -53,8 +54,8 @@ public class GrandfatherWillisRenderer extends MobRenderer<GrandfatherWillis, Wi
     @Override
     public void extractRenderState(GrandfatherWillis entity, WillisRenderState renderState, float partialTick) {
         super.extractRenderState(entity, renderState, partialTick);
-        renderState.idleAnimationState.copyFrom(entity.idleAnimationState);
         renderState.walkingAnimationState.copyFrom(entity.walkingAnimationState);
+        renderState.idleAnimationState.copyFrom(entity.idleAnimationState);
         renderState.scale = 2.5F;
     }
 }

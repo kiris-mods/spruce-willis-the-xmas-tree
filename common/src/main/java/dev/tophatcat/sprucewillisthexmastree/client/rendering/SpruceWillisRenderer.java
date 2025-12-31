@@ -17,6 +17,7 @@
 package dev.tophatcat.sprucewillisthexmastree.client.rendering;
 
 import dev.tophatcat.sprucewillisthexmastree.SpruceWillisCommon;
+import dev.tophatcat.sprucewillisthexmastree.client.WillisRenderState;
 import dev.tophatcat.sprucewillisthexmastree.client.models.SpruceWillisModel;
 import dev.tophatcat.sprucewillisthexmastree.entities.SpruceWillis;
 import net.minecraft.client.model.geom.ModelLayerLocation;
