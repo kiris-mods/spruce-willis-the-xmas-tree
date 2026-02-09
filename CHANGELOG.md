@@ -1,4 +1,7 @@
 ### 1.21.11
+- 11.0.1  
+Some minor fixes and code cleanup, nothing new really.  
+New item icon for spawn egg.
 - 11.0.0  
   Port to 1.21.11  
   Redo rendering code and added fresh animations.  
